@@ -45,7 +45,7 @@ public class PokemonService {
         return pokemonList
                 .stream().filter(pokemon -> {
                     var appearedOnSearch = search
-                            .map(v -> pokemon.name().contains(v))
+                            .map(v -> pokemon.name().toLowerCase().contains(v.toLowerCase()))
                             .orElse(true);
                     return appearedOnSearch && filter.stream().allMatch(filterType -> pokemon.type().contains(filterType.name()));
                 })
