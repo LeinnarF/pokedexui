@@ -1,24 +1,33 @@
 package org.nice.Panels;
 
-import java.awt.*;
-import javax.swing.*;
-
-import org.nice.Components.Search.*;
-
+import com.formdev.flatlaf.ui.FlatLineBorder;
 import net.miginfocom.swing.MigLayout;
+import org.nice.Components.Search.SearchBar;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class Header extends JPanel {
     public Header() {
-        setBackground(new Color(0xE46666));
-        setPreferredSize(new Dimension(0,77));
-        setLayout(new MigLayout("", "0[37%][62%]", "23[100%]23"));
+        setLayout(new MigLayout("", "grow"));
+        setBorder(
+                new FlatLineBorder(
+                        new Insets(0,0,1,0),
+                        UIManager.getColor("Component.borderColor"))
+        );
+        init();
 
-        JPanel searchPanel = new JPanel(); // to group the search elements
-        searchPanel.setBackground(new Color(0xE45566)); // 0xE46666
-        searchPanel.setLayout(new MigLayout("","10%[80%][20%]","0[100%]0"));
-        add(searchPanel, "grow");
-        searchPanel.add(new SearchBar(), "grow");
-        //searchPanel.add(new SearchButton(), "grow");
-        //searchPanel.add(new SearchFilter(), "grow");
     }
+
+    private void init() {
+        var leftside = new JPanel(new MigLayout("al left", "[][grow]"));
+
+        add(leftside, "grow");
+        leftside.add(new JLabel("Pokedexx"), "align left");
+        // Search bar
+        leftside.add(new SearchBar(), "grow, align right");
+
+
+    }
+
 }
