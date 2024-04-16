@@ -117,6 +117,7 @@ public class ListView extends JScrollPane {
 
                     }
                 });
+                listbox.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 return new Item<>(listbox, Optional.of("grow"));
             }, // 3rd listbox builder or view
             new Item<>(new JLabel("No Pokemons found ;("),Optional.of("align center center")), // 4th
