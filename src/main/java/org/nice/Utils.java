@@ -1,10 +1,26 @@
 package org.nice;
 
+import javax.swing.*;
+import java.awt.*;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 public class Utils {
+
+    public static ImageIcon getImage(String resourcePath) {
+        return new ImageIcon(getResource(resourcePath));
+    }
+
+    public static ImageIcon getImage(String resourcePath, int width, int height) {
+        return resizeImage(getImage(resourcePath), width, height);
+    }
+
+    public static ImageIcon resizeImage(ImageIcon orig, int width, int height) {
+        var scaled = orig.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(scaled);
+    }
+
     public static String getResource(String resourcePath) {
         try {
             var path = Objects.requireNonNull(
