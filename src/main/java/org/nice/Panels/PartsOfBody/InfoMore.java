@@ -56,7 +56,7 @@ public class InfoMore extends JPanel{
         //description
         JLabel description = new JLabel();
         description.setText(MessageFormat.format("<HTML><br/><p>{0}</p></HTML>",descriptionText ));
-        description.setFont(new Font("Verdana", Font.PLAIN, 15));
+        description.setFont(new Font("Verdana", Font.PLAIN, 16));
         descriptionPanel.add(description);
 
         //stat bars

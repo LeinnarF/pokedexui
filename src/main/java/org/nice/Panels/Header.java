@@ -17,19 +17,18 @@ public class Header extends JPanel {
                         UIManager.getColor("Component.borderColor"))
         );
         init();
-
+        setBackground(new Color(0xE46666));
     }
 
     private void init() {
         var leftside = new JPanel(new MigLayout("al left", "[][grow]"));
 
         add(leftside, "grow");
-        leftside.add(new JLabel("Pokedexx"), "align left");
+        leftside.add(new JLabel(""), "align left");
+        leftside.setBackground(new Color(0xE46666));
         // Search bar
         leftside.add(new SearchBar(), "grow, align right");
         leftside.add(new FilterBtn(), "align right");
 
-
     }
-
 }

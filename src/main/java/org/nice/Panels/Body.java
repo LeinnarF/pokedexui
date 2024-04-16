@@ -12,7 +12,7 @@ public class Body extends JPanel{
     
         // Info section
         Info.setPreferredSize(new Dimension(666,586));
-        Info.setBackground(new Color(0xF6F6F6));
+        Info.setBackground(Color.white);
         Info.setLayout(new MigLayout("","0[100%]0", "[50%]0[50%]"));
 
         Info.add(new InfoBase(),"grow, wrap");
