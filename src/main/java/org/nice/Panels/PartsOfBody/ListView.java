@@ -4,11 +4,14 @@ import net.miginfocom.swing.MigLayout;
 import org.nice.lib.listview.DynamicListView;
 import org.nice.lib.listview.Item;
 import org.nice.lib.roundcorner.*;
+import org.nice.models.PokemonModel;
 import org.nice.models.PokemonTypeColor;
 import org.nice.services.PokemonService;
+import org.nice.services.SearchService;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,10 +22,10 @@ public class ListView extends JScrollPane {
 
         setPreferredSize(new Dimension(414,586));
         setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        ArrayList<PokemonModel> pokeList = new ArrayList<>(PokemonService.getInstance().filterPokemons(List.of()));
 
         var list = new DynamicListView<>(
-            PokemonService.getInstance().filterPokemons(List.of()), //1st list ng poke
-            pokemonModel -> String.valueOf(pokemonModel.id()),// 2nd id builder
+            pokeList, //1st list ng poke
             v -> {
 
                 Color typeColor = PokemonTypeColor.getColor(v.type().get(0));
@@ -97,5 +100,12 @@ public class ListView extends JScrollPane {
         );
         setViewportView(list);
         getVerticalScrollBar().setUnitIncrement(20);
+        SearchService.getInstance().onSearchStringChange().subscribe(v -> {
+            list.updateItems(
+                    PokemonService.getInstance().filterPokemons(List.of(), Optional.of(v))
+            );
+            repaint();
+            revalidate();
+        });
     }
 }

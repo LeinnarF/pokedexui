@@ -3,8 +3,10 @@ package org.nice.Panels.PartsOfBody;
 import net.miginfocom.swing.MigLayout;
 import org.nice.lib.listview.DynamicListView;
 import org.nice.lib.listview.Item;
+import org.nice.models.PokemonModel;
 import org.nice.models.PokemonType;
 import org.nice.services.PokemonService;
+import org.nice.services.SearchService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,9 +15,9 @@ import java.util.Optional;
 
 public class Listlist extends JScrollPane {
     public Listlist(){
+        var pokeList = PokemonService.getInstance().filterPokemons(List.of());
         var list = new DynamicListView<>(
-            PokemonService.getInstance().filterPokemons(List.of()),
-            pokemonModel -> String.valueOf(pokemonModel.id()),
+            pokeList,
             v -> {
                 var view = new JPanel(new MigLayout());
                 view.add(new JLabel(String.valueOf(v.id())));
@@ -27,5 +29,7 @@ public class Listlist extends JScrollPane {
         );
         setViewportView(list);
         getVerticalScrollBar().setUnitIncrement(20);
+
+
     }
 }
