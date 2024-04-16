@@ -106,6 +106,7 @@ public class InfoMore extends JPanel{
                 );
             }
 
+            statsPanel.removeAll();
             Optional<PokemonModel.BaseStats> stats = p.base();
             if(stats.isPresent()){
                 PokemonModel.BaseStats baseStats = stats.get();
@@ -115,16 +116,17 @@ public class InfoMore extends JPanel{
                 SPATK = baseStats.SpAttack();
                 SPDEF = baseStats.SpDefense();
                 SPD = baseStats.Speed();
-
+                // Recreate stats
+                statsPanel.add(new StatBar("HP", HP, maxStat, new Color(0xFFDF6D)));
+                statsPanel.add(new StatBar("ATK", ATK, maxStat, new Color(0xE46666)));
+                statsPanel.add(new StatBar("DEF", DEF, maxStat, new Color(0x7480ED)));
+                statsPanel.add(new StatBar("SP. ATK", SPATK, maxStat, new Color(0xF2A6A6)));
+                statsPanel.add(new StatBar("SP. DEF", SPDEF, maxStat, new Color(0x7DA6CC)));
+                statsPanel.add(new StatBar("SPD", SPD, maxStat, new Color(0x796CC9)));
+            } else {
+                statsPanel.add(new JLabel("Pokemon got no stats available. );"));
             }
-            // Recreate stats
-            statsPanel.removeAll();
-            statsPanel.add(new StatBar("HP", HP, maxStat, new Color(0xFFDF6D)));
-            statsPanel.add(new StatBar("ATK", ATK, maxStat, new Color(0xE46666)));
-            statsPanel.add(new StatBar("DEF", DEF, maxStat, new Color(0x7480ED)));
-            statsPanel.add(new StatBar("SP. ATK", SPATK, maxStat, new Color(0xF2A6A6)));
-            statsPanel.add(new StatBar("SP. DEF", SPDEF, maxStat, new Color(0x7DA6CC)));
-            statsPanel.add(new StatBar("SPD", SPD, maxStat, new Color(0x796CC9)));
+
             statsPanel.revalidate();
             statsPanel.repaint();
 
