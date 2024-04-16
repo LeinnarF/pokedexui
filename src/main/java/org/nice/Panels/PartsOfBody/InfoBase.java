@@ -56,11 +56,8 @@ public class InfoBase extends JPanel  {
     RoundedCorners PokeStat  = new RoundedCorners(); 
 
     var path = findPokemon.get().image().hires().orElse(findPokemon.get().image().sprite());
-    ImageIcon image = new ImageIcon(Utils.getResource(path));
-    Image img = image.getImage(); 
-    Image newimg = img.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH); 
-    image = new ImageIcon(newimg);  
-    
+    ImageIcon image = Utils.getImage(path, 200,200);
+
     JLabel imagetoLabel = new JLabel(image);
     PokeImage.setPreferredSize(new Dimension(280,280));
     PokeImage.setBackground(new Color(0xE9FFFB));
@@ -176,10 +173,7 @@ public class InfoBase extends JPanel  {
         pokemonName.setText(p.name());
         pokeSpec.setText(p.species());
 
-        ImageIcon newImage = new ImageIcon(Utils.getResource(p.image().hires().orElse(p.image().thumbnail())));
-        Image img2 = newImage.getImage();
-        Image newimg2 = img2.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH);
-        newImage = new ImageIcon(newimg2);
+        ImageIcon newImage= Utils.getImage(p.image().hires().orElse(p.image().thumbnail()), 200,200);
         imagetoLabel.setIcon(newImage);
 
         pokeH.setText("Height: "+p.profile().height());
