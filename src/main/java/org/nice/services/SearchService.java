@@ -1,6 +1,7 @@
 package org.nice.services;
 
 
+import org.nice.Utils;
 import org.nice.models.PokemonType;
 import rx.Observable;
 import rx.subjects.PublishSubject;
@@ -23,7 +24,7 @@ public class SearchService {
     }
 
     public void setSearchString(String v) {
-        searchString.onNext(v);
+        searchString.onNext(Utils.escapeRegex(v));
     }
     public void setTypeFilters(List<PokemonType> l) {
         typeFilters.onNext(l);
