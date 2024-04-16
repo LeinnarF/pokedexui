@@ -3,6 +3,8 @@ package org.nice.Panels.PartsOfBody;
 import com.formdev.flatlaf.ui.FlatDropShadowBorder;
 import net.miginfocom.swing.MigLayout;
 import org.nice.Components.StatBar;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.nice.Utils;
 import org.nice.models.PokemonModel;
 import org.nice.services.PokemonService;
@@ -89,56 +91,87 @@ public class InfoMore extends JPanel{
         add(tab, "grow");
         //setBorder(border);
         pokemonService.onCurrentPokemon().subscribe(p -> {
-            description.setText(MessageFormat.format("<HTML><br/><p>{0}</p></HTML>",p.description() ));
+
+            //description
+            description.setText(MessageFormat.format("<HTML><p>{0}</p></br></HTML>",p.description() ));
 
             evolutionPanel.removeAll();
 
             // Set the evolList
-            var evolList = new ArrayList<PokemonModel>();
-            var next = p.getNextEvolution();
-            var prev = p.getPrevEvolution();
-            evolList.add(p);
-            while(prev.isPresent()) {
-                evolList.add(prev.get().model());
-                prev = prev.get().model().getPrevEvolution();
-            }
-            while (!next.isEmpty()) {
-                var a = next.get(0);
-                evolList.add(a.model());
-                next = a.model().getNextEvolution();
-            }
-            evolList.sort(Comparator.comparingInt(PokemonModel::id));
+            if(p.id()==133){
+                String eeveeData = "{\"evolution\":{\"next\":[[\"134\",\"use Water Stone\"],[\"135\",\"use Thunder Stone\"],[\"136\",\"use Fire Stone\"],[\"196\",\"high Friendship, Daytime\"],[\"197\",\"high Friendship, Nighttime\"],[\"470\",\"level up near a Mossy Rock\"],[\"471\",\"level up near an Icy Rock\"],[\"700\",\"High Affection and knowing Fairy move\"]]}}";
+                JSONObject eeveeObject = new JSONObject(eeveeData);
+                JSONArray eeveeEvols = eeveeObject.getJSONObject("evolution").getJSONArray("next");
 
-            var i = 0;
-            for(var evol : evolList) {
-                var card = new JPanel(new MigLayout("wrap", "grow"));
-                card.setPreferredSize(new Dimension(120,120));
-                card.setBorder(
-                        BorderFactory.createCompoundBorder(
-                                new FlatDropShadowBorder(
-                                        UIManager.getColor("Component.shadowColor"),
-                                        new Insets(10,10,10,10),
-                                        0.05f
-                                ),
-                                new EmptyBorder(20,20,20,20)
-                        )
-                );
-                var image = new JLabel();
-                image.setIcon(Utils.getImage(
-                        evol.image().thumbnail(),
-                        100,100
-                ));
-                card.add(image);
-                card.add(new JLabel(evol.name()), "al center");
-                evolutionPanel.add(card);
-                if(i != evolList.size() - 1) {
-                    evolutionPanel.add(new JLabel("---->"));
+                evolutionPanel.revalidate();
+                evolutionPanel.repaint();
+
+                for(int i = 0; i < eeveeEvols.length();i++){
+                    JSONArray evolInfo = eeveeEvols.getJSONArray(i);
+                    int evolModelID = evolInfo.getInt(0);
+                    String evolMethod = evolInfo.getString(1);
+
+                    Optional<PokemonModel> evolInstanceOptional = pokemonService.getPokemon(evolModelID);
+                    PokemonModel evolInstance = evolInstanceOptional.get();
+
+                    JLabel evolInstanceImage = new JLabel();
+                    evolInstanceImage.setIcon(Utils.getImage(evolInstance.image().thumbnail()));
+                    evolInstanceImage.setText(evolInstance.name());
+                    evolInstanceImage.setHorizontalTextPosition(JLabel.CENTER);
+                    evolInstanceImage.setVerticalTextPosition(JLabel.BOTTOM);
+
+                    evolutionPanel.add(evolInstanceImage);
                 }
-                i++;
             }
 
-            evolutionPanel.revalidate();
-            evolutionPanel.repaint();
+            else
+            {
+                var evolList = new ArrayList<PokemonModel>();
+                var next = p.getNextEvolution();
+                var prev = p.getPrevEvolution();
+                evolList.add(p);
+                while(prev.isPresent()) {
+                    evolList.add(prev.get().model());
+                    prev = prev.get().model().getPrevEvolution();
+                }
+                while (!next.isEmpty()) {
+                    var a = next.get(0);
+                    evolList.add(a.model());
+                    next = a.model().getNextEvolution();
+                }
+                evolList.sort(Comparator.comparingInt(PokemonModel::id));
+
+                var i = 0;
+                for(var evol : evolList) {
+                    var card = new JPanel(new MigLayout("wrap", "grow"));
+                    card.setPreferredSize(new Dimension(120,120));
+                    card.setBorder(
+                            BorderFactory.createCompoundBorder(
+                                    new FlatDropShadowBorder(
+                                            UIManager.getColor("Component.shadowColor"),
+                                            new Insets(10,10,10,10),
+                                            0.05f
+                                    ),
+                                    new EmptyBorder(20,20,20,20)
+                            )
+                    );
+                    var image = new JLabel();
+                    image.setIcon(Utils.getImage(
+                            evol.image().thumbnail(),
+                            100,100
+                    ));
+                    card.add(image);
+                    card.add(new JLabel(evol.name()), "al center");
+                    evolutionPanel.add(card);
+                    if(i != evolList.size() - 1) {
+                        evolutionPanel.add(new JLabel("---->"));
+                    }
+                    i++;
+                }
+
+                evolutionPanel.revalidate();
+                evolutionPanel.repaint();
+            }
 
 
 
