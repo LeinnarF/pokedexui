@@ -29,6 +29,7 @@ public class ListView extends JScrollPane {
 
         var list = new DynamicListView<>(
             pokeList, //1st list ng poke
+            v -> String.valueOf(v.id()),
             v -> {
 
                 Color typeColor = PokemonTypeColor.getColor(v.type().get(0));
