@@ -15,7 +15,7 @@ public class SearchService {
         return instance;
     }
     public Observable<String> onSearchStringChange() {
-        return searchString;
+        return searchString.asObservable().distinctUntilChanged();
     }
 
     public Observable<List<PokemonType>> onTypeFilterChange() {
