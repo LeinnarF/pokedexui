@@ -44,9 +44,8 @@ public class PokemonService {
     public List<PokemonModel> filterPokemons(List<PokemonType> filter, Optional<String> search) {
         return pokemonList
                 .stream().filter(pokemon -> {
-                    var pattern = Pattern.compile("^"+search.orElseGet(() -> "").toLowerCase() + ".*$");
                     var appearedOnSearch = search
-                            .map(s -> pattern.matcher(pokemon.name().toLowerCase()).matches() )
+                            .map(v -> pokemon.name().contains(v))
                             .orElse(true);
                     return appearedOnSearch && filter.stream().allMatch(filterType -> pokemon.type().contains(filterType.name()));
                 })
