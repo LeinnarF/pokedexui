@@ -54,7 +54,7 @@ public class ListView extends JScrollPane {
                 Pname.setPreferredSize(new Dimension(200,60));
                 Pname.setLayout(new MigLayout("align center center"));
                 Pname.setBackground(typeColor);
-                JLabel pokeName = new JLabel(v.name().english()){{
+                JLabel pokeName = new JLabel(v.name()){{
                     setFont(new Font("Arial", Font.BOLD,20));
                     setForeground(Color.white);
                 }};

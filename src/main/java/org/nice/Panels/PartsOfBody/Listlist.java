@@ -19,7 +19,7 @@ public class Listlist extends JScrollPane {
             v -> {
                 var view = new JPanel(new MigLayout());
                 view.add(new JLabel(String.valueOf(v.id())));
-                view.add(new JLabel(v.name().english()));
+                view.add(new JLabel(v.name()));
                 return new Item<>(view, Optional.empty());
             },
             new Item<>(new JLabel("nice"),Optional.empty()),

@@ -27,7 +27,7 @@ public class InfoBase extends JPanel  {
     Optional<PokemonModel> findPokemon = pokemonService.getPokemon(887);
     if(findPokemon.isPresent()){
         PokemonModel pokeModel = findPokemon.get();
-        Name = pokeModel.name().english();
+        Name = pokeModel.name();
         Species = pokeModel.species();
         ID = pokeModel.id();
         Gender = pokeModel.profile().gender();

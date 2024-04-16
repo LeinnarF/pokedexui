@@ -2,7 +2,7 @@ package org.nice.services;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.nice.lib.Utils;
+import org.nice.Utils;
 import org.nice.models.PokemonModel;
 import org.nice.models.PokemonType;
 import rx.Observable;
@@ -10,8 +10,6 @@ import rx.subjects.BehaviorSubject;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -22,13 +20,14 @@ public class PokemonService {
         return instance;
     }
 
-    List<PokemonModel> pokemonList = new ArrayList<>();
+    ArrayList<PokemonModel> pokemonList = new ArrayList<>();
 
     private BehaviorSubject<PokemonModel> currentPokemon;
 
     public Observable<PokemonModel> onCurrentPokemon() {
         return currentPokemon.asObservable();
     }
+
 
 
     /** Sets the currentPokemon field and fires the change event
@@ -43,16 +42,16 @@ public class PokemonService {
     }
 
     public List<PokemonModel> filterPokemons(List<PokemonType> filter, Optional<String> search) {
-       return pokemonList
-               .stream().filter(pokemon -> {
-                   var pattern = Pattern.compile("^"+search.orElseGet(() -> "").toLowerCase() + ".*$");
-                   var appearedOnSearch = search
-                           .map(s -> pattern.matcher(pokemon.name().english().toLowerCase()).matches() )
-                           .orElse(true);
-                   return appearedOnSearch && filter.stream().allMatch(filterType -> pokemon.type().contains(filterType.name()));
-               })
-               .sorted(Comparator.comparingInt(PokemonModel::id))
-               .toList();
+        return pokemonList
+                .stream().filter(pokemon -> {
+                    var pattern = Pattern.compile("^"+search.orElseGet(() -> "").toLowerCase() + ".*$");
+                    var appearedOnSearch = search
+                            .map(s -> pattern.matcher(pokemon.name().toLowerCase()).matches() )
+                            .orElse(true);
+                    return appearedOnSearch && filter.stream().allMatch(filterType -> pokemon.type().contains(filterType.name()));
+                })
+                .sorted(Comparator.comparingInt(PokemonModel::id))
+                .toList();
     }
 
     public List<PokemonModel> filterPokemons(List<PokemonType> filter) {
@@ -85,119 +84,143 @@ public class PokemonService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        pokemonList = parseJsonArray(jsonArray);
+        parseJsonArray(jsonArray);
 
     }
 
+    private void parseJsonArray(JSONArray jsonArray) {
+        var list = pokemonList;
 
-    private static List<PokemonModel> parseJsonArray(JSONArray jsonArray) {
-        List<PokemonModel> pokemonList = new ArrayList<>();
-        for (Object obj : jsonArray) {
-            JSONObject jsonObj = (JSONObject) obj;
-            PokemonModel pokemon = parseJsonObject(jsonObj);
-            pokemonList.add(pokemon);
+        for(var item : jsonArray) {
+            list.add(
+                    parseAsPokemon((JSONObject)item)
+            );
         }
-        return pokemonList;
     }
 
-    private static PokemonModel parseJsonObject(JSONObject jsonObj) {
-        Optional<List<List<String>>> nextEvol = Optional.empty();
-        Optional<List<String>> prevEvol = Optional.empty();
-        var evol = jsonObj.getJSONObject("evolution");
-        if(evol.has("prev")) {
-            prevEvol = Optional.of(
-                     evol.getJSONArray("prev").toList().stream().map(Object::toString).toList()
-            );
-        }
-        if(evol.has("next")) {
-            nextEvol = Optional.of(
-                    jsonArrayToListOfLists(evol.getJSONArray("next"))
-            );
-        }
+    private PokemonModel parseAsPokemon(JSONObject item) {
+        var id = item.getInt("id");
+        var name = item.getJSONObject("name").getString("english");
+        var type = parseAsPokemonType(item.getJSONArray("type"));
+        var baseStats = parseAsPokemonStats(item);
+        String species = item.getString("species");
+        var description = item.getString("description");
+        PokemonModel.Profile profile = parseAsPokemonProfile(item.getJSONObject("profile"));
+        PokemonModel.Image image = parseAsImages(item.getJSONObject("image"));
+        PokemonModel.Evolution evolution = parseAsPOkemonEvolution(item);
+        var pokemon = new PokemonModel(
+                id,
+                name,
+                type,
+                baseStats,
+                species,
+                description,
+                evolution,
+                profile,
+                image,
+                pokemonList
+        );
 
-        return new PokemonModel(
-                jsonObj.getInt("id"),
-                new PokemonModel.Name(
-                        jsonObj.getJSONObject("name").getString("english"),
-                        jsonObj.getJSONObject("name").getString("japanese"),
-                        jsonObj.getJSONObject("name").getString("chinese"),
-                        jsonObj.getJSONObject("name").getString("french")
-                ),
-                jsonArrayToList(jsonObj.getJSONArray("type")),
-                parseBaseStats(jsonObj),
-                jsonObj.getString("species"),
-                jsonObj.getString("description"),
-                new PokemonModel.Evolution(
-                        nextEvol,
-                        prevEvol
-                ),
-                parsePokemonProfile(jsonObj),
-                parsePokemonImage(jsonObj)
+        return pokemon;
+    }
+
+    private PokemonModel.Evolution parseAsPOkemonEvolution(JSONObject pokemonJson) {
+        var evolutionJson =  pokemonJson.getJSONObject("evolution");
+        Optional<PokemonModel.EvolutionData> prevEvolution = Optional.empty();
+        ArrayList<PokemonModel.EvolutionData> nextEvolution = new ArrayList<>();
+        if(evolutionJson.has("prev")) {
+            var prevJson = evolutionJson.getJSONArray("prev");
+            prevEvolution = Optional.of(
+                    new PokemonModel.EvolutionData(
+                            Integer.parseInt(prevJson.getString(0)),
+                            prevJson.getString(1)
+                    )
+            );
+        }
+        if(evolutionJson.has("next")) {
+            var nextEvolutionListJson = evolutionJson.getJSONArray("next");
+            for(var current : nextEvolutionListJson) {
+                var nextEvolJson = (JSONArray)current;
+                nextEvolution.add(new PokemonModel.EvolutionData(
+                        Integer.parseInt(nextEvolJson.getString(0)),
+                        nextEvolJson.getString(1)
+                ));
+
+            }
+        }
+        return new PokemonModel.Evolution(
+                nextEvolution,
+                prevEvolution
         );
     }
 
-    private static PokemonModel.Image parsePokemonImage(JSONObject jsonObj) {
+    private PokemonModel.Image parseAsImages(JSONObject jsonObj) {
         Optional<String> hires = Optional.empty();
         var toReplace = "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master";
         if(jsonObj.has("hires")) {
-            hires = Optional.of(jsonObj.getJSONObject("image").getString("hires").replace(toReplace, ""));
+            hires = Optional.of(jsonObj.getString("hires").replace(toReplace, ""));
         }
         return new PokemonModel.Image(
-                jsonObj.getJSONObject("image").getString("sprite").replace(toReplace, ""),
-                jsonObj.getJSONObject("image").getString("thumbnail").replace(toReplace, ""),
+                jsonObj.getString("sprite").replace(toReplace, ""),
+                jsonObj.getString("thumbnail").replace(toReplace, ""),
                 hires
         );
     }
 
-    private static PokemonModel.Profile parsePokemonProfile(JSONObject jsonObj) {
+    private PokemonModel.Profile parseAsPokemonProfile(JSONObject profile) {
         Optional<List<String>> egg = Optional.empty();
-        if(jsonObj.has("egg")) {
-            egg = Optional.of(jsonArrayToList(jsonObj.getJSONObject("profile").getJSONArray("egg")));
+        if(profile.has("egg")) {
+            var eggJsonArray = profile.getJSONArray("egg");
+            ArrayList<String> list = new ArrayList<>();
+            for(var e : eggJsonArray) {
+                list.add(e.toString());
+            }
+            egg = Optional.of(
+                    list
+            );
         }
         return new PokemonModel.Profile(
-                jsonObj.getJSONObject("profile").getString("height"),
-                jsonObj.getJSONObject("profile").getString("weight"),
+                profile.getString("height"),
+                profile.getString("weight"),
                 egg,
-                jsonArrayToListOfLists(jsonObj.getJSONObject("profile").getJSONArray("ability")),
-                jsonObj.getJSONObject("profile").getString("gender")
+                parseAsAbility(profile.getJSONArray("ability")),
+                profile.getString("gender")
         );
     }
 
-    private static Optional<PokemonModel.BaseStats> parseBaseStats(JSONObject jsonObj) {
-        if(!jsonObj.has("base")) {
-            return Optional.empty();
+    private List<PokemonModel.Ability> parseAsAbility(JSONArray abilities) {
+        ArrayList<PokemonModel.Ability> list = new ArrayList<>();
+
+        for(var ab : abilities) {
+            var abJson = (JSONArray)ab;
+            list.add(
+                    new PokemonModel.Ability(
+                            abJson.getString(0),
+                            abJson.getBoolean(1)
+                    )
+            );
         }
-        JSONObject base = jsonObj.getJSONObject("base");
-        return Optional.of(new PokemonModel.BaseStats(
-                base.getInt("HP"),
-                base.getInt("Attack"),
-                base.getInt("Defense"),
-                base.getInt("Sp. Attack"),
-                base.getInt("Sp. Defense"),
-                base.getInt("Speed")
-        ));
+
+        return list;    }
+
+    private Optional<PokemonModel.BaseStats> parseAsPokemonStats(JSONObject item) {
+        if(item.has("base")) {
+            var base = item.getJSONObject("base");
+            return Optional.of(new PokemonModel.BaseStats(
+                    base.getInt("HP"),
+                    base.getInt("Attack"),
+                    base.getInt("Defense"),
+                    base.getInt("Sp. Attack"),
+                    base.getInt("Sp. Defense"),
+                    base.getInt("Speed")
+            ));
+        }
+        return Optional.empty();
     }
 
-    private static List<String> jsonArrayToList(JSONArray jsonArray) {
-        List<String> list = new ArrayList<>();
-        for (Object obj : jsonArray) {
-            list.add((String) obj);
-        }
-        return list;
+    private List<String> parseAsPokemonType(JSONArray type) {
+        return type.toList().stream().map(Object::toString).toList();
     }
 
-    private static List<List<String>> jsonArrayToListOfLists(JSONArray jsonArray) {
-        List<List<String>> listOfLists = new ArrayList<>();
-        for (Object obj : jsonArray) {
-            JSONArray innerArray = null;
-            innerArray = (JSONArray) obj;
-            List<String> innerList = new ArrayList<>();
-            for (Object innerObj : innerArray) {
-                innerList.add((String)innerObj);
-            }
-            listOfLists.add(innerList);
-        }
-        return listOfLists;
-    }
 
 }
