@@ -21,13 +21,13 @@ public class Header extends JPanel {
     }
 
     private void init() {
-        var leftside = new JPanel(new MigLayout("align left", "[grow]"));
+        var leftside = new JPanel(new MigLayout("align left", "[][grow]"));
 
         add(leftside, "grow");
-        //leftside.add(new JLabel(""), "align left");
+        leftside.add(new JLabel("POKEDEXX"), "align left");
         leftside.setBackground(new Color(0xE46666)); //0xE46666
         // Search bar
-        leftside.add(new SearchBar(), "grow, align left");
+        leftside.add(new SearchBar(), "grow");
         leftside.add(new FilterBtn(), "align left");
 
     }
