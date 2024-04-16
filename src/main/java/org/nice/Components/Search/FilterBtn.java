@@ -26,7 +26,7 @@ public class FilterBtn extends JButton  {
 
 class FilterModal extends JDialog {
     public FilterModal() {
-        setModalityType(ModalityType.APPLICATION_MODAL);
+//        setModalityType(ModalityType.APPLICATION_MODAL);
         setTitle("Filter Options");
 //        setLocationRelativeTo(null);
         setMinimumSize(new Dimension(480,480));
@@ -38,7 +38,6 @@ class FilterModal extends JDialog {
 
         var unselectAllBtn = new JButton("Unselect All");
         var selectAllBtn = new JButton("Select All");
-        root.add(selectAllBtn, "grow");
         root.add(unselectAllBtn, "grow");
 
         var currentFilters = SearchService.getInstance().currentTypeFilters();
@@ -49,8 +48,12 @@ class FilterModal extends JDialog {
             btnMap.put(value.name(), btn);
             btn.addActionListener(e -> {
                 var list = new ArrayList<>(SearchService.getInstance().currentTypeFilters());
+
                 if(btn.isSelected()) {
                     list.add(value);
+                    if(list.size() > 2) {
+                        list.remove(0);
+                    }
                 } else {
                     list.remove(value);
                 }
@@ -62,12 +65,6 @@ class FilterModal extends JDialog {
 
         unselectAllBtn.addActionListener(e -> {
             SearchService.getInstance().setTypeFilters(List.of());
-        });
-
-        selectAllBtn.addActionListener(e -> {
-            SearchService.getInstance().setTypeFilters(
-                    Arrays.stream(PokemonType.values()).toList()
-            );
         });
 
         SearchService.getInstance().onTypeFilterChange().subscribe(typeList -> {

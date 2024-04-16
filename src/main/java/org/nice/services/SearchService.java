@@ -37,10 +37,10 @@ public class SearchService {
         typeFilters.onNext(l);
     }
     private static SearchService instance;
-    private PublishSubject<String> searchString = PublishSubject.create();
+    private BehaviorSubject<String> searchString = BehaviorSubject.create("");
 
     private BehaviorSubject<List<PokemonType>> typeFilters = BehaviorSubject.create(
-            Arrays.stream(PokemonType.values()).toList()
+            List.of()
     );
 
     private SearchService() {

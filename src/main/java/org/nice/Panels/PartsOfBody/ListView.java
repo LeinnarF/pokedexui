@@ -6,9 +6,11 @@ import org.nice.lib.listview.DynamicListView;
 import org.nice.lib.listview.Item;
 import org.nice.lib.roundcorner.*;
 import org.nice.models.PokemonModel;
+import org.nice.models.PokemonType;
 import org.nice.models.PokemonTypeColor;
 import org.nice.services.PokemonService;
 import org.nice.services.SearchService;
+import rx.Observable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -122,9 +124,11 @@ public class ListView extends JScrollPane {
         );
         setViewportView(list);
         getVerticalScrollBar().setUnitIncrement(20);
-        SearchService.getInstance().onSearchStringChange().subscribe(v -> {
+        var service = SearchService.getInstance();
+        Observable.combineLatest(service.onSearchStringChange(), service.onTypeFilterChange(), List::of).subscribe(v -> {
+            var filters = (List<PokemonType>)v.get(1);
             list.updateItems(
-                    PokemonService.getInstance().filterPokemons(List.of(), Optional.of(v))
+                    PokemonService.getInstance().filterPokemons(filters, Optional.of(v.get(0).toString()))
             );
             repaint();
             revalidate();
