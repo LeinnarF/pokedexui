@@ -37,7 +37,6 @@ class FilterModal extends JDialog {
     }
 
     public FilterModal() {
-        setModalityType(ModalityType.APPLICATION_MODAL);
         setTitle("Filter Options");
         setLocationRelativeTo(null);
         setMinimumSize(new Dimension(480,480));
@@ -84,7 +83,20 @@ class FilterModal extends JDialog {
                 btn.setSelected(typeList.contains(PokemonType.valueOf(type)));
             });
         });
+        this.addWindowFocusListener(new WindowFocusListener() {
 
+            public void windowGainedFocus(WindowEvent e) {
+                //do nothing
+            }
+
+            public void windowLostFocus(WindowEvent e) {
+                if (SwingUtilities.isDescendingFrom(e.getOppositeWindow(), FilterModal.this)) {
+                    return;
+                }
+                FilterModal.this.dispose();
+            }
+
+        });
 
     }
 }
