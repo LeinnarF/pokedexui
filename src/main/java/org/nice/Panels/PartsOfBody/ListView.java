@@ -12,6 +12,8 @@ import org.nice.services.SearchService;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -86,6 +88,32 @@ public class ListView extends JScrollPane {
                 Psprite.add(pokeSprite);
                 listbox.add(Psprite, "grow");
 
+                listbox.addMouseListener(new MouseListener() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        PokemonService.getInstance().setCurrentPokemon(v);
+                    }
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+
+                    }
+                });
                 return new Item<>(listbox, Optional.of("grow"));
             }, // 3rd listbox builder or view
             new Item<>(new JLabel("No Pokemons found ;("),Optional.of("align center center")), // 4th

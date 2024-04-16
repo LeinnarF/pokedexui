@@ -84,5 +84,45 @@ public class InfoMore extends JPanel{
 
         add(tab, "grow");
         //setBorder(border);
+        pokemonService.onCurrentPokemon().subscribe(p -> {
+            description.setText(MessageFormat.format("<HTML><br/><p>{0}</p></HTML>",p.description() ));
+
+
+            var next = p.getNextEvolution();
+            if(next.isEmpty()) {
+                evolutionData.setText("No next evolution.");
+                evolutionData.setIcon(
+                        new ImageIcon(Utils.getResource(p.image().thumbnail()))
+                );
+            } else {
+                evolutionData.setText(next.get(0).model().name());
+                evolutionData.setIcon(
+                        new ImageIcon(Utils.getResource(next.get(0).model().image().thumbnail()))
+                );
+            }
+
+            Optional<PokemonModel.BaseStats> stats = p.base();
+            if(stats.isPresent()){
+                PokemonModel.BaseStats baseStats = stats.get();
+                HP = baseStats.HP();
+                ATK = baseStats.Attack();
+                DEF = baseStats.Defense();
+                SPATK = baseStats.SpAttack();
+                SPDEF = baseStats.SpDefense();
+                SPD = baseStats.Speed();
+
+            }
+            // Recreate stats
+            statsPanel.removeAll();
+            statsPanel.add(new StatBar("HP", HP, maxStat, new Color(0xFFDF6D)));
+            statsPanel.add(new StatBar("ATK", ATK, maxStat, new Color(0xE46666)));
+            statsPanel.add(new StatBar("DEF", DEF, maxStat, new Color(0x7480ED)));
+            statsPanel.add(new StatBar("SP. ATK", SPATK, maxStat, new Color(0xF2A6A6)));
+            statsPanel.add(new StatBar("SP. DEF", SPDEF, maxStat, new Color(0x7DA6CC)));
+            statsPanel.add(new StatBar("SPD", SPD, maxStat, new Color(0x796CC9)));
+            statsPanel.revalidate();
+            statsPanel.repaint();
+
+        });
     }
 }
