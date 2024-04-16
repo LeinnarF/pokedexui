@@ -25,8 +25,10 @@ public class InfoMore extends JPanel{
     Observable<PokemonModel> currentPokemonModel = pokemonService.onCurrentPokemon();
 
     public InfoMore(){
-        setLayout(new MigLayout("align center center, debug", "[grow]"));
+        setPreferredSize(new Dimension(640,276));
         setBackground(Color.GRAY);
+        setLayout(new MigLayout("align center ","0[grow]0","[grow]0"));
+
 
         //test values start
         Optional<PokemonModel> dummyPokemon = pokemonService.getPokemon(1);
@@ -54,7 +56,7 @@ public class InfoMore extends JPanel{
         //description
         JLabel description = new JLabel();
         description.setText(MessageFormat.format("<HTML><br/><p>{0}</p></HTML>",descriptionText ));
-        description.setFont(new Font("Arial", Font.PLAIN, 15));
+        description.setFont(new Font("Verdana", Font.PLAIN, 15));
         descriptionPanel.add(description);
 
         //stat bars
