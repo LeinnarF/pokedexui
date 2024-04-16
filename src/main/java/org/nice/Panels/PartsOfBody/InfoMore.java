@@ -91,6 +91,7 @@ public class InfoMore extends JPanel{
         pokemonService.onCurrentPokemon().subscribe(p -> {
             description.setText(MessageFormat.format("<HTML><br/><p>{0}</p></HTML>",p.description() ));
 
+            evolutionPanel.removeAll();
 
             // Set the evolList
             var evolList = new ArrayList<PokemonModel>();
@@ -107,7 +108,7 @@ public class InfoMore extends JPanel{
                 next = a.model().getNextEvolution();
             }
             evolList.sort(Comparator.comparingInt(PokemonModel::id));
-            evolutionPanel.removeAll();
+
             var i = 0;
             for(var evol : evolList) {
                 var card = new JPanel(new MigLayout("wrap", "grow"));
@@ -135,6 +136,9 @@ public class InfoMore extends JPanel{
                 }
                 i++;
             }
+
+            evolutionPanel.revalidate();
+            evolutionPanel.repaint();
 
 
 
