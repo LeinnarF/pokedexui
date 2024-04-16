@@ -3,6 +3,9 @@ package org.nice.Components;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+
+import org.nice.lib.roundcorner.RoundedCorners;
+
 import java.awt.*;
 
 public class StatBar extends JPanel {
@@ -10,8 +13,7 @@ public class StatBar extends JPanel {
 
         setLayout(new MigLayout("gapx 12", "[55]10[500]", ""));
 
-        JPanel statNamePanel = new JPanel();
-        //statNamePanel.setBorder(new FlatRoundBorder());
+        RoundedCorners statNamePanel = new RoundedCorners();
         statNamePanel.setBackground(fillColor);
 
         JLabel statName = new JLabel();

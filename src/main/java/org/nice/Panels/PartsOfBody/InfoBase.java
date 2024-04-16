@@ -22,10 +22,11 @@ public class InfoBase extends JPanel  {
     String Name, Height, Weight, Species, Gender;
     int ID;
     List<String> Type;
+    String zeros = "";
 
     public InfoBase() {
 
-    Optional<PokemonModel> findPokemon = pokemonService.getPokemon(887);
+    Optional<PokemonModel> findPokemon = pokemonService.getPokemon(1); // 1 is the default pokemon
     if(findPokemon.isPresent()){
         PokemonModel pokeModel = findPokemon.get();
         Name = pokeModel.name();
@@ -38,14 +39,17 @@ public class InfoBase extends JPanel  {
         
 
     }else {System.out.println("NO POKEMON");}
-    
-    String zeros = "";
-    if(ID < 10){
-        zeros = "00";
-    }
-    else if (ID < 100){
-        zeros = "0";
-    }
+
+    pokemonService.onCurrentPokemon().subscribe( p ->{
+        Name = p.name();
+        Species = p.species();
+        ID = p.id();
+
+        Height = p.profile().height();
+        Weight = p.profile().weight();
+        Gender = p.profile().gender();
+    });
+
 
     JPanel PokeImage = new JPanel();
     JPanel PokeBasic = new JPanel(); 
@@ -54,42 +58,64 @@ public class InfoBase extends JPanel  {
     var path = findPokemon.get().image().hires().orElse(findPokemon.get().image().sprite());
     ImageIcon image = new ImageIcon(Utils.getResource(path));
     Image img = image.getImage(); 
-    Image newimg = img.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+    Image newimg = img.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH); 
     image = new ImageIcon(newimg);  
+    
     JLabel imagetoLabel = new JLabel(image);
     PokeImage.setPreferredSize(new Dimension(280,280));
     PokeImage.setBackground(new Color(0xE9FFFB));
     PokeImage.setBorder(BorderFactory.createLineBorder(new Color(0xD9D9D9), 15));  
     PokeImage.setLayout(new MigLayout("align center center"));
-    PokeImage.add((imagetoLabel));
+    PokeImage.add(imagetoLabel);
     
     // Basic info section
     PokeBasic.setPreferredSize(new Dimension(280,280));
-    PokeBasic.setBackground(new Color(0xF6F6F6));
+    PokeBasic.setBackground(Color.white);
     PokeBasic.setLayout(new MigLayout("","[100%]","[100%]"));
 
-    PokeBasic.add(new JLabel("No. "+zeros+ID){{setFont(new Font("Arial",Font.BOLD, 16));}}, "wrap");
-    PokeBasic.add(new JLabel(Name){{setFont(new Font("Arial",Font.BOLD, 16));}}, "wrap");
-    PokeBasic.add(new JLabel(Species){{
-            setFont(new Font("Arial",Font.PLAIN, 16));
-            setForeground(Color.gray);
-        }}, "wrap");
+    JLabel pokemonID = new JLabel();
+    pokemonID.setText("00"+ID);
+    pokemonID.setFont(new Font("Arial",Font.BOLD,16)); 
+    PokeBasic.add(pokemonID,"wrap");
+
+    JLabel pokemonName = new JLabel();
+    pokemonName.setText(Name);
+    pokemonName.setFont(new Font("Arial",Font.BOLD,16));
+    PokeBasic.add(pokemonName,"wrap");
+
+    JLabel pokeSpec = new JLabel();
+    pokeSpec.setText(Species);
+    pokeSpec.setFont(new Font("Arial",Font.PLAIN,16));
+    pokeSpec.setForeground(Color.gray);
+    PokeBasic.add(pokeSpec,"wrap");
+
 
     // Stats section
+    JLabel pokeH = new JLabel();
+    JLabel pokeW = new JLabel();
+    JLabel pokeG = new JLabel();
+    Font statfont = new Font("Courier",Font.PLAIN,16);
     PokeStat.setPreferredSize(new Dimension(280,280));
     PokeStat.setBackground(new Color(0xFFF3C7));
     PokeStat.setLayout(new MigLayout("","5%[100%]","[100%]"));
     PokeStat.setAllRound(20);
-    PokeStat.add(new JLabel("Height: "+Height){{setFont(new Font("Courier",Font.PLAIN, 16));}}, "wrap");
-    PokeStat.add(new JLabel("Weight: "+Weight){{setFont(new Font("Courier",Font.PLAIN, 16));}}, "wrap");
-    PokeStat.add(new JLabel("Gender: "+Gender){{setFont(new Font("Courier",Font.PLAIN, 16));}}, "wrap");
+    pokeH.setFont(statfont);
+    pokeG.setFont(statfont);
+    pokeW.setFont(statfont);
+    pokeH.setText("Height: "+Height);
+    pokeW.setText("Weight: "+Weight);
+    pokeG.setText("Gender: "+Gender);
+    PokeStat.add(pokeH,"wrap");
+    PokeStat.add(pokeW,"wrap");
+    PokeStat.add(pokeG,"wrap");
+    
     
     //type -> PokemBasic
     
 
     JPanel typePanel = new JPanel();
     typePanel.setPreferredSize(new Dimension(100,30));
-    typePanel.setBackground(new Color(0xF6F6F6));
+    typePanel.setBackground(Color.white);
     typePanel.setLayout(new MigLayout("align left center"));
     PokeBasic.add(typePanel,"grow");
     RoundedCorners type1 = new RoundedCorners();
@@ -101,20 +127,24 @@ public class InfoBase extends JPanel  {
     type1.setLayout(new MigLayout("align center center"));
     type2.setLayout(new MigLayout("align center center"));
     
+    JLabel type1Label = new JLabel();
+    type1Label.setText(Type.get(0));
+    JLabel type2Label = new JLabel();
+    type2Label.setText(Type.get(1));
+
     Color typeColor = PokemonTypeColor.getColor(Type.get(0));
 
     type1.setBackground(typeColor);
-    type2.setBackground(new Color(0xF6F6F6));
+    type2.setBackground(Color.white);
 
-    type1.add(new JLabel(Type.get(0)){{
-        setFont(new Font("Arial", Font.BOLD,14));
-        setForeground(Color.white);
-    }});
+    type1.add(type1Label);
+    type1Label.setFont(new Font("Arial",Font.BOLD,14));
+    type1Label.setForeground(Color.white);
+
     if(Type.size()==2){
-        type2.add(new JLabel(Type.get(1)){{
-            setFont(new Font("Arial", Font.BOLD,14));
-            setForeground(Color.white);
-        }});
+        type2.add(type2Label);
+        type2Label.setFont(new Font("Arial",Font.BOLD,14));
+        type2Label.setForeground(Color.white);
         typeColor = PokemonTypeColor.getColor(Type.get(1));
         type2.setBackground(typeColor);
     }
@@ -126,6 +156,56 @@ public class InfoBase extends JPanel  {
     add(PokeStat,"cell 1 1, grow");
     add(PokeImage,"cell 0 0, span 1 2, grow");
     setPreferredSize(new Dimension(666,586));
-    setBackground(new Color(0xF6F6F6)); // 0xF6F6F6
+    setBackground(Color.white); // 0xF6F6F6
+
+    
+
+    pokemonService.onCurrentPokemon().subscribe( p ->{
+
+        if(p.id() < 10){
+            zeros = "00";
+        }
+        else if (p.id() < 100){
+            zeros = "0";
+        }
+        else{
+            zeros = "";
+        }
+
+        pokemonID.setText(zeros+p.id());
+        pokemonName.setText(p.name());
+        pokeSpec.setText(p.species());
+
+        ImageIcon newImage = new ImageIcon(Utils.getResource(p.image().hires().orElse(p.image().thumbnail())));
+        Image img2 = newImage.getImage();
+        Image newimg2 = img2.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH);
+        newImage = new ImageIcon(newimg2);
+        imagetoLabel.setIcon(newImage);
+
+        pokeH.setText("Height: "+p.profile().height());
+        pokeW.setText("Weight: "+p.profile().weight());
+        pokeG.setText("Gender: "+p.profile().gender());
+        
+        Color typCol = PokemonTypeColor.getColor(p.type().get(0));
+
+        type1Label.setText(p.type().get(0));
+        type1.setBackground(typCol);
+        type2.setBackground(Color.white);
+
+        if(p.type().size()==2){
+            type2Label.setText(p.type().get(1));
+            typCol = PokemonTypeColor.getColor(p.type().get(1));
+            type2.setBackground(typCol);
+        }
+        
+
+
+
+        
+
+
+    });
+
+
     }
 }
