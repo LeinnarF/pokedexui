@@ -2,6 +2,7 @@ package org.nice.Panels;
 
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import net.miginfocom.swing.MigLayout;
+import org.nice.Components.Search.FilterBtn;
 import org.nice.Components.Search.SearchBar;
 
 import javax.swing.*;
@@ -26,6 +27,7 @@ public class Header extends JPanel {
         leftside.add(new JLabel("Pokedexx"), "align left");
         // Search bar
         leftside.add(new SearchBar(), "grow, align right");
+        leftside.add(new FilterBtn(), "align right");
 
 
     }

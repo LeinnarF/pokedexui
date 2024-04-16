@@ -4,8 +4,11 @@ package org.nice.services;
 import org.nice.Utils;
 import org.nice.models.PokemonType;
 import rx.Observable;
+import rx.subjects.BehaviorSubject;
 import rx.subjects.PublishSubject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SearchService {
@@ -23,6 +26,10 @@ public class SearchService {
         return typeFilters;
     }
 
+    public List<PokemonType> currentTypeFilters() {
+        return typeFilters.getValue();
+    }
+
     public void setSearchString(String v) {
         searchString.onNext(Utils.escapeRegex(v));
     }
@@ -32,7 +39,9 @@ public class SearchService {
     private static SearchService instance;
     private PublishSubject<String> searchString = PublishSubject.create();
 
-    private PublishSubject<List<PokemonType>> typeFilters = PublishSubject.create();
+    private BehaviorSubject<List<PokemonType>> typeFilters = BehaviorSubject.create(
+            Arrays.stream(PokemonType.values()).toList()
+    );
 
     private SearchService() {
 
