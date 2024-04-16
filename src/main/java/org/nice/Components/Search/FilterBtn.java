@@ -26,9 +26,9 @@ public class FilterBtn extends JButton  {
 
 class FilterModal extends JDialog {
     public FilterModal() {
-//        setModalityType(ModalityType.APPLICATION_MODAL);
+        setModalityType(ModalityType.APPLICATION_MODAL);
         setTitle("Filter Options");
-//        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
         setMinimumSize(new Dimension(480,480));
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
