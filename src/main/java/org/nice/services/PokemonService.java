@@ -158,11 +158,11 @@ public class PokemonService {
         Optional<String> hires = Optional.empty();
         var toReplace = "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master";
         if(jsonObj.has("hires")) {
-            hires = Optional.of(jsonObj.getString("hires").replace(toReplace, ""));
+            hires = Optional.of(jsonObj.getString("hires").replace(toReplace, "").replace("/pokedex", ""));
         }
         return new PokemonModel.Image(
-                jsonObj.getString("sprite").replace(toReplace, ""),
-                jsonObj.getString("thumbnail").replace(toReplace, ""),
+                jsonObj.getString("sprite").replace(toReplace, "").replace("/pokedex", ""),
+                jsonObj.getString("thumbnail").replace(toReplace, "").replace("/pokedex", ""),
                 hires
         );
     }

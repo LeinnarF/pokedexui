@@ -1,6 +1,7 @@
 package org.nice.Panels.PartsOfBody;
 
 import net.miginfocom.swing.MigLayout;
+import org.nice.Utils;
 import org.nice.lib.listview.DynamicListView;
 import org.nice.lib.listview.Item;
 import org.nice.lib.roundcorner.*;
@@ -64,15 +65,6 @@ public class ListView extends JScrollPane {
                 Pname.add(pokeName);
                 listbox.add(Pname,"grow");
 
-                int ID = v.id();
-                String zeros = "";
-
-                if(ID < 10){
-                    zeros = "00";
-                }
-                else if(ID < 100){
-                    zeros = "0";
-                }
 
                 // sprite
                 RoundedCorners Psprite = new RoundedCorners();
@@ -84,7 +76,8 @@ public class ListView extends JScrollPane {
                 Psprite.setBackground(Color.white);
                 Psprite.setAllRound(100);
 
-                ImageIcon image = new ImageIcon("src/main/resources/images/sprites/"+zeros+ID+".png");
+                var imagePath = v.image().sprite();
+                ImageIcon image = new ImageIcon(Utils.getResource(imagePath));
                 Image img =image.getImage();
                 Image newimg = img.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
                 image = new ImageIcon(newimg);

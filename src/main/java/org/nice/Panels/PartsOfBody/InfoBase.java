@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.swing.*;
 
+import org.nice.Utils;
 import org.nice.lib.roundcorner.RoundedCorners;
 import org.nice.models.PokemonModel;
 import org.nice.models.PokemonTypeColor;
@@ -45,12 +46,13 @@ public class InfoBase extends JPanel  {
     else if (ID < 100){
         zeros = "0";
     }
-    
-    JPanel PokeImage = new JPanel(); 
+
+    JPanel PokeImage = new JPanel();
     JPanel PokeBasic = new JPanel(); 
     RoundedCorners PokeStat  = new RoundedCorners(); 
-    
-    ImageIcon image = new ImageIcon("src/main/resources/images/hires/"+zeros+ID+".png");  
+
+    var path = findPokemon.get().image().hires().orElse(findPokemon.get().image().sprite());
+    ImageIcon image = new ImageIcon(Utils.getResource(path));
     Image img = image.getImage(); 
     Image newimg = img.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
     image = new ImageIcon(newimg);  
