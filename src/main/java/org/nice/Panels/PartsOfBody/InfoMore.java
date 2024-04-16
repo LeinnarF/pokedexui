@@ -1,5 +1,6 @@
 package org.nice.Panels.PartsOfBody;
 
+import com.formdev.flatlaf.ui.FlatDropShadowBorder;
 import net.miginfocom.swing.MigLayout;
 import org.nice.Components.StatBar;
 import org.nice.Utils;
@@ -9,8 +10,11 @@ import rx.Observable;
 
 import java.awt.*;
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Optional;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class InfoMore extends JPanel{
     JPanel descriptionPanel = new JPanel(new MigLayout("align left top"));
@@ -67,13 +71,6 @@ public class InfoMore extends JPanel{
         statsPanel.add(new StatBar("SP. DEF", SPDEF, maxStat, new Color(0x7DA6CC)));
         statsPanel.add(new StatBar("SPD", SPD, maxStat, new Color(0x796CC9)));
 
-        //evolution
-        JLabel evolutionData = new JLabel();
-        evolutionData.setText("Ivysaur");
-        evolutionData.setIcon(new ImageIcon(Utils.getResource("/images/thumbnails/00" + 2 + ".png")));
-        evolutionData.setHorizontalTextPosition(JLabel.CENTER);
-        evolutionData.setVerticalTextPosition(JLabel.BOTTOM);
-        evolutionPanel.add(evolutionData);
 
         //Tabs
         UIManager.put("TabbedPane.foreground", Color.white);
@@ -93,18 +90,51 @@ public class InfoMore extends JPanel{
             description.setText(MessageFormat.format("<HTML><br/><p>{0}</p></HTML>",p.description() ));
 
 
+            // Set the evolList
+            var evolList = new ArrayList<PokemonModel>();
             var next = p.getNextEvolution();
-            if(next.isEmpty()) {
-                evolutionData.setText("No next evolution.");
-                evolutionData.setIcon(
-                        Utils.getImage(p.image().thumbnail(), 120,120)
-                );
-            } else {
-                evolutionData.setText(next.get(0).model().name());
-                evolutionData.setIcon(
-                        Utils.getImage(next.get(0).model().image().thumbnail(), 120,120)
-                );
+            var prev = p.getPrevEvolution();
+            evolList.add(p);
+            while(prev.isPresent()) {
+                evolList.add(prev.get().model());
+                prev = prev.get().model().getPrevEvolution();
             }
+            while (!next.isEmpty()) {
+                var a = next.get(0);
+                evolList.add(a.model());
+                next = a.model().getNextEvolution();
+            }
+            evolList.sort(Comparator.comparingInt(PokemonModel::id));
+            evolutionPanel.removeAll();
+            var i = 0;
+            for(var evol : evolList) {
+                var card = new JPanel(new MigLayout("wrap", "grow"));
+                card.setPreferredSize(new Dimension(120,120));
+                card.setBorder(
+                        BorderFactory.createCompoundBorder(
+                                new FlatDropShadowBorder(
+                                        UIManager.getColor("Component.shadowColor"),
+                                        new Insets(10,10,10,10),
+                                        0.05f
+                                ),
+                                new EmptyBorder(20,20,20,20)
+                        )
+                );
+                var image = new JLabel();
+                image.setIcon(Utils.getImage(
+                        evol.image().thumbnail(),
+                        100,100
+                ));
+                card.add(image);
+                card.add(new JLabel(evol.name()), "al center");
+                evolutionPanel.add(card);
+                if(i != evolList.size() - 1) {
+                    evolutionPanel.add(new JLabel("---->"));
+                }
+                i++;
+            }
+
+
 
             statsPanel.removeAll();
             Optional<PokemonModel.BaseStats> stats = p.base();
