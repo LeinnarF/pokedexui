@@ -72,17 +72,17 @@ public class InfoBase extends JPanel  {
 
     JLabel pokemonID = new JLabel();
     pokemonID.setText("00"+ID);
-    pokemonID.setFont(new Font("Arial",Font.BOLD,16)); 
+    pokemonID.setFont(new Font("Arial",Font.BOLD,18)); 
     PokeBasic.add(pokemonID,"wrap");
 
     JLabel pokemonName = new JLabel();
     pokemonName.setText(Name);
-    pokemonName.setFont(new Font("Arial",Font.BOLD,16));
+    pokemonName.setFont(new Font("Verdana",Font.BOLD,18));
     PokeBasic.add(pokemonName,"wrap");
 
     JLabel pokeSpec = new JLabel();
     pokeSpec.setText(Species);
-    pokeSpec.setFont(new Font("Arial",Font.PLAIN,16));
+    pokeSpec.setFont(new Font("Verdana",Font.PLAIN,16));
     pokeSpec.setForeground(Color.gray);
     PokeBasic.add(pokeSpec,"wrap");
 
@@ -91,7 +91,7 @@ public class InfoBase extends JPanel  {
     JLabel pokeH = new JLabel();
     JLabel pokeW = new JLabel();
     JLabel pokeG = new JLabel();
-    Font statfont = new Font("Courier",Font.PLAIN,16);
+    Font statfont = new Font("Verdana",Font.PLAIN,16);
     PokeStat.setPreferredSize(new Dimension(280,280));
     PokeStat.setBackground(new Color(0xFFF3C7));
     PokeStat.setLayout(new MigLayout("","5%[100%]","[100%]"));

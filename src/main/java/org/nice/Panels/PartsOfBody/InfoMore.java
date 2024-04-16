@@ -16,6 +16,7 @@ public class InfoMore extends JPanel{
     JPanel descriptionPanel = new JPanel(new MigLayout("align left top"));
     JPanel evolutionPanel = new JPanel(new MigLayout("align center center"));
     JPanel statsPanel = new JPanel(new MigLayout("align center center, wrap", "[]", "[]0[]0[]0[]0[]0[]"));
+    JPanel weaknessPanel = new JPanel();
 
     int maxStat = 255;
     int HP, ATK, DEF, SPATK, SPDEF, SPD;
@@ -85,7 +86,8 @@ public class InfoMore extends JPanel{
         tab.add("Description", descriptionPanel);
         tab.add("Evolution", evolutionPanel);
         tab.add("Stats", statsPanel);
-        tab.setFont(new Font("Arial", Font.BOLD, 18));
+        tab.add("Weakness", weaknessPanel);
+        tab.setFont(new Font("Verdana", Font.PLAIN, 18));
 
         add(tab, "grow");
         //setBorder(border);
