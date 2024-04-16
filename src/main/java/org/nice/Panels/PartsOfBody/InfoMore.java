@@ -17,7 +17,7 @@ public class InfoMore extends JPanel{
     JPanel evolutionPanel = new JPanel(new MigLayout("align center center"));
     JPanel statsPanel = new JPanel(new MigLayout("align center center, wrap", "[]", "[]0[]0[]0[]0[]0[]"));
 
-    int maxStat = 300;
+    int maxStat = 255;
     int HP, ATK, DEF, SPATK, SPDEF, SPD;
     String descriptionText;
 
@@ -92,12 +92,12 @@ public class InfoMore extends JPanel{
             if(next.isEmpty()) {
                 evolutionData.setText("No next evolution.");
                 evolutionData.setIcon(
-                        new ImageIcon(Utils.getResource(p.image().thumbnail()))
+                        Utils.getImage(p.image().thumbnail(), 120,120)
                 );
             } else {
                 evolutionData.setText(next.get(0).model().name());
                 evolutionData.setIcon(
-                        new ImageIcon(Utils.getResource(next.get(0).model().image().thumbnail()))
+                        Utils.getImage(next.get(0).model().image().thumbnail(), 120,120)
                 );
             }
 
