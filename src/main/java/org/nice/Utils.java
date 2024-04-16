@@ -11,7 +11,7 @@ public class Utils {
                     Utils.class.getResource(resourcePath)
             );
             return URLDecoder.decode(path.getPath(), StandardCharsets.UTF_8);
-        }catch(Exception e) {
+        }catch(NullPointerException e) {
             throw  new RuntimeException("The file with path: " + resourcePath + " does not exists.");
         }
     }
