@@ -18,6 +18,7 @@ public class Main {
         frame.setMinimumSize(new Dimension(1080, 750));  //720 + 30
         frame.setLocationRelativeTo(null); // center the window
         frame.setLayout(new BorderLayout(0,0));
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         frame.add(new Footer(), BorderLayout.SOUTH);
         frame.add(new Header(), BorderLayout.NORTH);
