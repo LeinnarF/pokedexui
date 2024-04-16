@@ -76,13 +76,16 @@ public class InfoMore extends JPanel{
         evolutionPanel.add(evolutionData);
 
         //Tabs
+        UIManager.put("TabbedPane.foreground", Color.white);
+        UIManager.put("TabbedPane.background", Color.GRAY);
+        var bg = UIManager.getColor("TabbedPane.background");
+        UIManager.put("TabbedPane.underlineColor", bg);
+        UIManager.put("TabbedPane.focusColor", bg);
         JTabbedPane tab = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.WRAP_TAB_LAYOUT);
-        tab.setBackground(Color.GRAY);
         tab.add("Description", descriptionPanel);
         tab.add("Evolution", evolutionPanel);
         tab.add("Stats", statsPanel);
         tab.setFont(new Font("Arial", Font.BOLD, 18));
-        tab.setForeground(Color.WHITE);
 
         add(tab, "grow");
         //setBorder(border);
