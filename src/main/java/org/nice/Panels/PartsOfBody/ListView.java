@@ -95,7 +95,7 @@ public class ListView extends JScrollPane {
 
                 return new Item<>(listbox, Optional.of("grow"));
             }, // 3rd listbox builder or view
-            new Item<>(new JLabel("nice"),Optional.empty()), // 4th 
+            new Item<>(new JLabel("No Pokemons found ;("),Optional.of("align center center")), // 4th
             new MigLayout("wrap, align center", "grow")
         );
         setViewportView(list);
