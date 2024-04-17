@@ -11,7 +11,7 @@ public class PokemonTypeColor {
         typeColors.put("Normal", new Color(0xD9D9D9));
         typeColors.put("Fighting", new Color(0xBC7878));
         typeColors.put("Flying", new Color(0xD6D4F6));
-        typeColors.put("Poison", new Color(0xD6D4F6));
+        typeColors.put("Poison", new Color(0xAA70D8));
         typeColors.put("Ground", new Color(0xF4CE94));
         typeColors.put("Rock", new Color(0xC1AA95));
         typeColors.put("Bug", new Color(0xB5C782));
