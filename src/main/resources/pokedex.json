@@ -1014,7 +1014,7 @@
   {
     "id": 29,
     "name": {
-      "english": "Nidoran♀",
+      "english": "NidoranF",
       "japanese": "ニドラン♀",
       "chinese": "尼多兰",
       "french": "Nidoran♀"
@@ -1029,7 +1029,7 @@
       "Speed": 41
     },
     "species": "Poison Pin Pokémon",
-    "description": "Nidoran♀ has barbs that secrete a powerful poison. They are thought to have developed as protection for this small-bodied Pokémon. When enraged, it releases a horrible toxin from its horn.",
+    "description": "NidoranF has barbs that secrete a powerful poison. They are thought to have developed as protection for this small-bodied Pokémon. When enraged, it releases a horrible toxin from its horn.",
     "evolution": { "next": [["30", "Level 16"]] },
     "profile": {
       "height": "0.4 m",
@@ -1128,7 +1128,7 @@
   {
     "id": 32,
     "name": {
-      "english": "Nidoran♂",
+      "english": "NidoranM",
       "japanese": "ニドラン♂",
       "chinese": "尼多朗",
       "french": "Nidoran♂"
@@ -1143,7 +1143,7 @@
       "Speed": 50
     },
     "species": "Poison Pin Pokémon",
-    "description": "Nidoran♂ has developed muscles for moving its ears. Thanks to them, the ears can be freely moved in any direction. Even the slightest sound does not escape this Pokémon’s notice.",
+    "description": "NidoranM has developed muscles for moving its ears. Thanks to them, the ears can be freely moved in any direction. Even the slightest sound does not escape this Pokémon’s notice.",
     "evolution": { "next": [["33", "Level 16"]] },
     "profile": {
       "height": "0.5 m",

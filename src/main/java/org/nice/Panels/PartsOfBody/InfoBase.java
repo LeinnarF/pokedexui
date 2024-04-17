@@ -5,13 +5,12 @@ import java.util.Optional;
 import java.util.List;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.MatteBorder;
 
 import org.nice.lib.roundcorner.RoundedCorners;
 import org.nice.models.PokemonModel;
 import org.nice.models.PokemonTypeColor;
+import org.nice.models.PokemonModel.Ability;
 import org.nice.services.PokemonImage;
 import org.nice.services.PokemonService;
 
@@ -27,6 +26,7 @@ public class InfoBase extends JPanel  {
     String Name, Height, Weight, Species, Gender;
     int ID;
     List<String> Type;
+    List<Ability> Ability;
     String zeros = "";
 
     public InfoBase() {
@@ -41,7 +41,7 @@ public class InfoBase extends JPanel  {
         Height = pokeModel.profile().height();
         Weight = pokeModel.profile().weight();
         Type = pokeModel.type();
-        
+        Ability = pokeModel.profile().ability();
 
     }else {System.out.println("NO POKEMON");}
 
@@ -53,12 +53,25 @@ public class InfoBase extends JPanel  {
         Height = p.profile().height();
         Weight = p.profile().weight();
         Gender = p.profile().gender();
+        Ability = p.profile().ability();
     });
 
 
     JPanel PokeImage = new JPanel();
+    JPanel PokeImageShadow = new JPanel();
     JPanel PokeBasic = new JPanel(); 
     RoundedCorners PokeStat  = new RoundedCorners(); 
+    RoundedCorners PokeStatShadow = new RoundedCorners();
+
+    //shadow
+    PokeImageShadow.setLayout(new MigLayout("center","0[grow]0","0[grow]0"));
+    PokeImageShadow.setBackground(Color.white);
+    PokeImageShadow.setBorder(
+        BorderFactory.createCompoundBorder(
+                new FlatDropShadowBorder(Color.BLACK,new Insets(1,1,10,1) ,0.3f),
+                new EmptyBorder(0,0,0,0)
+            )
+        );
 
     ImageIcon image = PokemonImage.getHires(findPokemon.get(), 200,200);
 
@@ -68,6 +81,7 @@ public class InfoBase extends JPanel  {
     PokeImage.setBorder(BorderFactory.createLineBorder(new Color(0x808080), 15));  
     PokeImage.setLayout(new MigLayout("align center center"));
     PokeImage.add(imagetoLabel);
+    PokeImageShadow.add(PokeImage,"grow");
     
     // Basic info section
     PokeBasic.setPreferredSize(new Dimension(280,280));
@@ -95,31 +109,35 @@ public class InfoBase extends JPanel  {
     JLabel pokeH = new JLabel();
     JLabel pokeW = new JLabel();
     JLabel pokeG = new JLabel();
-    Font statfont = new Font("Verdana",Font.PLAIN,16);
+    JLabel pokeA = new JLabel();
+    Font statfont = new Font("courier",Font.PLAIN,16);
     
-    // FIXME: shadow chu chu
-    PokeStat.setBorder(
+    //shadow
+    PokeStatShadow.setLayout(new MigLayout("center","0[grow]0","0[grow]0"));
+    PokeStatShadow.setBackground(Color.white);
+    PokeStatShadow.setAllRound(20);
+    PokeStatShadow.setBorder(
         BorderFactory.createCompoundBorder(
-                new FlatDropShadowBorder(Color.DARK_GRAY,new Insets(0,0,10,0) ,75),
-                new EmptyBorder(0,0,10,0)
+                new FlatDropShadowBorder(Color.BLACK,new Insets(1,1,10,1) ,0.15f),
+                new EmptyBorder(0,0,0,0)
             )
         );
-    
-
-    PokeStat.setPreferredSize(new Dimension(280,280));
-    PokeStat.setBackground(new Color(0xFFF3C7));
+    PokeStat.setBackground(new Color(0xFFF3C7)); //0xFFF3C7
     PokeStat.setLayout(new MigLayout("","5%[100%]","[100%]"));
     PokeStat.setAllRound(20);
     pokeH.setFont(statfont);
     pokeG.setFont(statfont);
     pokeW.setFont(statfont);
+    pokeA.setFont(statfont);
     pokeH.setText("Height: "+Height);
     pokeW.setText("Weight: "+Weight);
     pokeG.setText("Gender: "+Gender);
+    pokeA.setText("Ability: "+Ability.get(0).name());
     PokeStat.add(pokeH,"wrap");
     PokeStat.add(pokeW,"wrap");
     PokeStat.add(pokeG,"wrap");
-    
+    PokeStat.add(pokeA,"wrap");
+    PokeStatShadow.add(PokeStat,"grow");
     
     //type -> PokemBasic
     
@@ -164,8 +182,8 @@ public class InfoBase extends JPanel  {
 
     setLayout(new MigLayout("", "[50%][50%]", "[50%][50%]"));
     add(PokeBasic,"cell 1 0, grow");
-    add(PokeStat,"cell 1 1, grow");
-    add(PokeImage,"cell 0 0, span 1 2, grow");
+    add(PokeStatShadow,"cell 1 1, grow");
+    add(PokeImageShadow,"cell 0 0, span 1 2, grow");
     setPreferredSize(new Dimension(666,586));
     setBackground(Color.white); // 0xF6F6F6
 
@@ -182,6 +200,18 @@ public class InfoBase extends JPanel  {
         else{
             zeros = "";
         }
+        String gender = "♂ ♀";
+
+        if(p.profile().gender().equals("Genderless")){
+            gender = "genderless";
+        }
+        else if(p.profile().gender().equals("100:0")){
+            gender = "♂";
+        }
+        else if(p.profile().gender().equals("0:100")){
+            gender = "♀";
+        }
+        
 
         pokemonID.setText(zeros+p.id());
         pokemonName.setText(p.name());
@@ -192,7 +222,8 @@ public class InfoBase extends JPanel  {
 
         pokeH.setText("Height: "+p.profile().height());
         pokeW.setText("Weight: "+p.profile().weight());
-        pokeG.setText("Gender: "+p.profile().gender());
+        pokeG.setText("Gender: "+gender);
+        pokeA.setText("Ability: "+p.profile().ability().get(0).name());
         
         Color typCol = PokemonTypeColor.getColor(p.type().get(0));
 
@@ -207,13 +238,7 @@ public class InfoBase extends JPanel  {
         }
         
 
-
-
-        
-
-
     });
-
 
     }
 }

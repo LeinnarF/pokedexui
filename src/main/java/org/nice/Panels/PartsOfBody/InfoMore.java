@@ -64,6 +64,7 @@ public class InfoMore extends JPanel{
         JLabel description = new JLabel();
         description.setText(MessageFormat.format("<HTML><br/><p>{0}</p></HTML>",descriptionText ));
         description.setFont(new Font("Verdana", Font.PLAIN, 16));
+        description.setForeground(Color.DARK_GRAY);
         descriptionPanel.add(description);
 
         //stat bars
@@ -93,7 +94,7 @@ public class InfoMore extends JPanel{
         pokemonService.onCurrentPokemon().subscribe(p -> {
 
             //description
-            description.setText(MessageFormat.format("<HTML><p>{0}</p></br></HTML>",p.description() ));
+            description.setText(MessageFormat.format("<HTML><br><p>{0}</p></br></HTML>",p.description() ));
 
             evolutionPanel.removeAll();
 
@@ -119,13 +120,14 @@ public class InfoMore extends JPanel{
                     evolInstanceImage.setText(evolInstance.name());
                     evolInstanceImage.setHorizontalTextPosition(JLabel.CENTER);
                     evolInstanceImage.setVerticalTextPosition(JLabel.BOTTOM);
-
+                    evolutionPanel.setLayout(new MigLayout("wrap 4", "[grow][grow][grow][grow]", "[grow][grow]"));
                     evolutionPanel.add(evolInstanceImage);
                 }
             }
 
             else
             {
+                evolutionPanel.setLayout(new MigLayout("align center center"));
                 var evolList = new ArrayList<PokemonModel>();
                 var next = p.getNextEvolution();
                 var prev = p.getPrevEvolution();

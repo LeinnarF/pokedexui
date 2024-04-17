@@ -15,11 +15,12 @@ public class Header extends JPanel {
     public Header() {
         JPanel Master = new JPanel();
         setLayout(new MigLayout("center","0[100%]0","0[]0"));
+        setBackground(Color.white);
         Master.setLayout(new MigLayout("", "1.5%[grow][30%]"));
 
         Master.setBackground(new Color(0xE46666));
         setBorder(BorderFactory.createCompoundBorder(
-            new FlatDropShadowBorder(Color.DARK_GRAY, new Insets(0, 0, 10, 0),75),
+            new FlatDropShadowBorder(Color.black, new Insets(0, 0, 10,0 ),0.3f),
             new EmptyBorder(0,0,0,0)
         ));
         add(Master,"grow");
