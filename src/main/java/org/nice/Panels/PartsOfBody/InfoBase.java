@@ -9,10 +9,10 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 
-import org.nice.Utils;
 import org.nice.lib.roundcorner.RoundedCorners;
 import org.nice.models.PokemonModel;
 import org.nice.models.PokemonTypeColor;
+import org.nice.services.PokemonImage;
 import org.nice.services.PokemonService;
 
 import com.formdev.flatlaf.ui.FlatDropShadowBorder;
@@ -60,8 +60,7 @@ public class InfoBase extends JPanel  {
     JPanel PokeBasic = new JPanel(); 
     RoundedCorners PokeStat  = new RoundedCorners(); 
 
-    var path = findPokemon.get().image().hires().orElse(findPokemon.get().image().sprite());
-    ImageIcon image = Utils.getImage(path, 200,200);
+    ImageIcon image = PokemonImage.getHires(findPokemon.get(), 200,200);
 
     JLabel imagetoLabel = new JLabel(image);
     PokeImage.setPreferredSize(new Dimension(280,280));
@@ -188,7 +187,7 @@ public class InfoBase extends JPanel  {
         pokemonName.setText(p.name());
         pokeSpec.setText(p.species());
 
-        ImageIcon newImage= Utils.getImage(p.image().hires().orElse(p.image().thumbnail()), 200,200);
+        ImageIcon newImage= PokemonImage.getHires(p, 200,200);
         imagetoLabel.setIcon(newImage);
 
         pokeH.setText("Height: "+p.profile().height());

@@ -5,9 +5,12 @@ import org.nice.Main;
 import org.nice.models.PokemonType;
 import org.nice.services.PokemonService;
 import org.nice.services.SearchService;
+import rx.Subscription;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -25,10 +28,17 @@ public class FilterBtn extends JButton  {
 
 
 class FilterModal extends JDialog {
+    private final Subscription subscription;
+
+    @Override
+    public void removeNotify() {
+        super.removeNotify();
+        subscription.unsubscribe();
+    }
+
     public FilterModal() {
-//        setModalityType(ModalityType.APPLICATION_MODAL);
         setTitle("Filter Options");
-//        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
         setMinimumSize(new Dimension(480,480));
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
@@ -67,13 +77,26 @@ class FilterModal extends JDialog {
             SearchService.getInstance().setTypeFilters(List.of());
         });
 
-        SearchService.getInstance().onTypeFilterChange().subscribe(typeList -> {
+        this.subscription = SearchService.getInstance().onTypeFilterChange().subscribe(typeList -> {
             btnMap.keySet().forEach(type -> {
                 var btn = btnMap.get(type);
                 btn.setSelected(typeList.contains(PokemonType.valueOf(type)));
             });
         });
+        this.addWindowFocusListener(new WindowFocusListener() {
 
+            public void windowGainedFocus(WindowEvent e) {
+                //do nothing
+            }
+
+            public void windowLostFocus(WindowEvent e) {
+                if (SwingUtilities.isDescendingFrom(e.getOppositeWindow(), FilterModal.this)) {
+                    return;
+                }
+                FilterModal.this.dispose();
+            }
+
+        });
 
     }
 }
