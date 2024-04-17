@@ -141,7 +141,6 @@ public class InfoBase extends JPanel  {
     
     //type -> PokemBasic
     
-
     JPanel typePanel = new JPanel();
     typePanel.setPreferredSize(new Dimension(100,30));
     typePanel.setBackground(Color.white);
