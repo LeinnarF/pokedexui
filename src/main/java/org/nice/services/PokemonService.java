@@ -15,7 +15,7 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public class PokemonService {
-    private final static PokemonService instance = new PokemonService();
+    private static PokemonService instance;
     public static PokemonService getInstance() {
         return instance;
     }
@@ -28,6 +28,11 @@ public class PokemonService {
         return currentPokemon.asObservable();
     }
 
+    public static void init() {
+        if(instance == null) {
+            instance = new PokemonService();
+        }
+    }
 
 
     /** Sets the currentPokemon field and fires the change event
