@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.nice.Utils;
 import org.nice.models.PokemonModel;
+import org.nice.services.PokemonImage;
 import org.nice.services.PokemonService;
 import rx.Observable;
 
@@ -99,24 +100,19 @@ public class InfoMore extends JPanel{
 
             // Set the evolList
             if(p.id()==133){
-                String eeveeData = "{\"evolution\":{\"next\":[[\"134\",\"use Water Stone\"],[\"135\",\"use Thunder Stone\"],[\"136\",\"use Fire Stone\"],[\"196\",\"high Friendship, Daytime\"],[\"197\",\"high Friendship, Nighttime\"],[\"470\",\"level up near a Mossy Rock\"],[\"471\",\"level up near an Icy Rock\"],[\"700\",\"High Affection and knowing Fairy move\"]]}}";
-                JSONObject eeveeObject = new JSONObject(eeveeData);
-                JSONArray eeveeEvols = eeveeObject.getJSONObject("evolution").getJSONArray("next");
 
                 evolutionPanel.revalidate();
                 evolutionPanel.repaint();
 
-                for(int i = 0; i < eeveeEvols.length();i++){
-                    JSONArray evolInfo = eeveeEvols.getJSONArray(i);
-                    int evolModelID = evolInfo.getInt(0);
-                    String evolMethod = evolInfo.getString(1);
+                var eevee = pokemonService.getPokemon(133).get();
+                var eeveeEvols = eevee.getNextEvolution();
 
-                    Optional<PokemonModel> evolInstanceOptional = pokemonService.getPokemon(evolModelID);
-                    PokemonModel evolInstance = evolInstanceOptional.get();
-
+                for(var evol : eeveeEvols){
                     JLabel evolInstanceImage = new JLabel();
-                    evolInstanceImage.setIcon(Utils.getImage(evolInstance.image().thumbnail()));
-                    evolInstanceImage.setText(evolInstance.name());
+                    evolInstanceImage.setIcon(
+                            PokemonImage.getThumbnail(evol.model())
+                    );
+                    evolInstanceImage.setText(evol.model().name());
                     evolInstanceImage.setHorizontalTextPosition(JLabel.CENTER);
                     evolInstanceImage.setVerticalTextPosition(JLabel.BOTTOM);
 
