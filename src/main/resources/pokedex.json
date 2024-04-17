@@ -29393,6 +29393,14 @@
         ["Grassy-surge", "true"]
       ]
     },
+    "base": {
+      "HP": 50,
+      "Attack": 65,
+      "Defense": 50,
+      "Sp. Attack": 40,
+      "Sp. Defense": 40,
+      "Speed": 65
+    },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/810.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/810.png",
@@ -29419,6 +29427,14 @@
         ["Overgrow", "false"],
         ["Grassy-surge", "true"]
       ]
+    },
+    "base": {
+      "HP": 70,
+      "Attack": 85,
+      "Defense": 70,
+      "Sp. Attack": 55,
+      "Sp. Defense": 60,
+      "Speed": 80
     },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/811.png",
@@ -29447,6 +29463,14 @@
         ["Grassy-surge", "true"]
       ]
     },
+    "base": {
+      "HP": 100,
+      "Attack": 125,
+      "Defense": 90,
+      "Sp. Attack": 60,
+      "Sp. Defense": 70,
+      "Speed": 85
+    },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/812.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/812.png",
@@ -29474,6 +29498,15 @@
         ["Libero", "true"]
       ]
     },
+    "base": {
+      "HP": 50,
+      "Attack": 71,
+      "Defense": 40,
+      "Sp. Attack": 40,
+      "Sp. Defense": 40,
+      "Speed": 69
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/813.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/813.png",
@@ -29501,6 +29534,15 @@
         ["Libero", "true"]
       ]
     },
+    "base": {
+      "HP": 65,
+      "Attack": 86,
+      "Defense": 60,
+      "Sp. Attack": 55,
+      "Sp. Defense": 60,
+      "Speed": 94
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/814.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/814.png",
@@ -29528,6 +29570,15 @@
         ["Libero", "true"]
       ]
     },
+    "base": {
+      "HP": 80,
+      "Attack": 116,
+      "Defense": 75,
+      "Sp. Attack": 65,
+      "Sp. Defense": 75,
+      "Speed": 119
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/815.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/815.png",
@@ -29555,6 +29606,15 @@
         ["Sniper", "true"]
       ]
     },
+    "base": {
+      "HP": 50,
+      "Attack": 40,
+      "Defense": 40,
+      "Sp. Attack": 70,
+      "Sp. Defense": 40,
+      "Speed": 70
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/816.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/816.png",
@@ -29582,6 +29642,15 @@
         ["Sniper", "true"]
       ]
     },
+    "base": {
+      "HP": 65,
+      "Attack": 60,
+      "Defense": 55,
+      "Sp. Attack": 95,
+      "Sp. Defense": 55,
+      "Speed": 90
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/817.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/817.png",
@@ -29609,6 +29678,15 @@
         ["Sniper", "true"]
       ]
     },
+    "base": {
+      "HP": 70,
+      "Attack": 85,
+      "Defense": 65,
+      "Sp. Attack": 125,
+      "Sp. Defense": 65,
+      "Speed": 120
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/818.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/818.png",
@@ -29636,6 +29714,15 @@
         ["Gluttony", "true"]
       ]
     },
+    "base": {
+      "HP": 70,
+      "Attack": 55,
+      "Defense": 55,
+      "Sp. Attack": 35,
+      "Sp. Defense": 35,
+      "Speed": 25
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/819.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/819.png",
@@ -29663,6 +29750,15 @@
         ["Gluttony", "true"]
       ]
     },
+    "base": {
+      "HP": 120,
+      "Attack": 95,
+      "Defense": 95,
+      "Sp. Attack": 55,
+      "Sp. Defense": 75,
+      "Speed": 20
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/820.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/820.png",
@@ -29691,6 +29787,15 @@
         ["Big-pecks", "true"]
       ]
     },
+    "base": {
+      "HP": 38,
+      "Attack": 47,
+      "Defense": 35,
+      "Sp. Attack": 33,
+      "Sp. Defense": 35,
+      "Speed": 57
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/821.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/821.png",
@@ -29719,6 +29824,15 @@
         ["Big-pecks", "true"]
       ]
     },
+    "base": {
+      "HP": 68,
+      "Attack": 67,
+      "Defense": 55,
+      "Sp. Attack": 43,
+      "Sp. Defense": 55,
+      "Speed": 77
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/822.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/822.png",
@@ -29747,6 +29861,15 @@
         ["Mirror-armor", "true"]
       ]
     },
+    "base": {
+      "HP": 98,
+      "Attack": 87,
+      "Defense": 105,
+      "Sp. Attack": 53,
+      "Sp. Defense": 85,
+      "Speed": 67
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/823.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/823.png",
@@ -29775,6 +29898,15 @@
         ["Telepathy", "true"]
       ]
     },
+    "base": {
+      "HP": 25,
+      "Attack": 20,
+      "Defense": 20,
+      "Sp. Attack": 25,
+      "Sp. Defense": 45,
+      "Speed": 45
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/824.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/824.png",
@@ -29803,6 +29935,15 @@
         ["Telepathy", "true"]
       ]
     },
+    "base": {
+      "HP": 50,
+      "Attack": 35,
+      "Defense": 80,
+      "Sp. Attack": 50,
+      "Sp. Defense": 90,
+      "Speed": 30
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/825.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/825.png",
@@ -29831,6 +29972,15 @@
         ["Telepathy", "true"]
       ]
     },
+    "base": {
+      "HP": 60,
+      "Attack": 45,
+      "Defense": 110,
+      "Sp. Attack": 80,
+      "Sp. Defense": 120,
+      "Speed": 90
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/826.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/826.png",
@@ -29859,6 +30009,15 @@
         ["Stakeout", "true"]
       ]
     },
+    "base": {
+      "HP": 40,
+      "Attack": 28,
+      "Defense": 28,
+      "Sp. Attack": 47,
+      "Sp. Defense": 52,
+      "Speed": 50
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/827.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/827.png",
@@ -29886,6 +30045,14 @@
         ["Unburden", "false"],
         ["Stakeout", "true"]
       ]
+    },
+    "base": {
+      "HP": 70,
+      "Attack": 58,
+      "Defense": 58,
+      "Sp. Attack": 87,
+      "Sp. Defense": 92,
+      "Speed": 90
     },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/828.png",
@@ -29915,6 +30082,15 @@
         ["Effect-spore", "true"]
       ]
     },
+    "base": {
+      "HP": 40,
+      "Attack": 40,
+      "Defense": 60,
+      "Sp. Attack": 40,
+      "Sp. Defense": 60,
+      "Speed": 10
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/829.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/829.png",
@@ -29943,6 +30119,15 @@
         ["Effect-spore", "true"]
       ]
     },
+    "base": {
+      "HP": 60,
+      "Attack": 50,
+      "Defense": 90,
+      "Sp. Attack": 80,
+      "Sp. Defense": 120,
+      "Speed": 60
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/830.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/830.png",
@@ -29971,6 +30156,15 @@
         ["Bulletproof", "true"]
       ]
     },
+    "base": {
+      "HP": 42,
+      "Attack": 40,
+      "Defense": 55,
+      "Sp. Attack": 40,
+      "Sp. Defense": 45,
+      "Speed": 48
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/831.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/831.png",
@@ -29999,6 +30193,15 @@
         ["Bulletproof", "true"]
       ]
     },
+    "base": {
+      "HP": 72,
+      "Attack": 80,
+      "Defense": 100,
+      "Sp. Attack": 60,
+      "Sp. Defense": 90,
+      "Speed": 88
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/832.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/832.png",
@@ -30027,6 +30230,15 @@
         ["Swift-swim", "true"]
       ]
     },
+    "base": {
+      "HP": 50,
+      "Attack": 64,
+      "Defense": 50,
+      "Sp. Attack": 38,
+      "Sp. Defense": 38,
+      "Speed": 44
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/833.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/833.png",
@@ -30055,6 +30267,15 @@
         ["Swift-swim", "true"]
       ]
     },
+    "base": {
+      "HP": 90,
+      "Attack": 115,
+      "Defense": 90,
+      "Sp. Attack": 48,
+      "Sp. Defense": 68,
+      "Speed": 74
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/834.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/834.png",
@@ -30082,6 +30303,15 @@
         ["Rattled", "true"]
       ]
     },
+    "base": {
+      "HP": 59,
+      "Attack": 45,
+      "Defense": 50,
+      "Sp. Attack": 40,
+      "Sp. Defense": 50,
+      "Speed": 26
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/835.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/835.png",
@@ -30109,6 +30339,15 @@
         ["Competitive", "true"]
       ]
     },
+    "base": {
+      "HP": 69,
+      "Attack": 90,
+      "Defense": 60,
+      "Sp. Attack": 90,
+      "Sp. Defense": 60,
+      "Speed": 121
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/836.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/836.png",
@@ -30137,6 +30376,15 @@
         ["Flash-fire", "true"]
       ]
     },
+    "base": {
+      "HP": 30,
+      "Attack": 40,
+      "Defense": 50,
+      "Sp. Attack": 40,
+      "Sp. Defense": 50,
+      "Speed": 30
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/837.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/837.png",
@@ -30164,6 +30412,14 @@
         ["Flame-body", "false"],
         ["Flash-fire", "true"]
       ]
+    },
+    "base": {
+      "HP": 80,
+      "Attack": 60,
+      "Defense": 90,
+      "Sp. Attack": 60,
+      "Sp. Defense": 70,
+      "Speed": 50
     },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/838.png",
@@ -30193,6 +30449,15 @@
         ["Flash-fire", "true"]
       ]
     },
+    "base": {
+      "HP": 110,
+      "Attack": 80,
+      "Defense": 120,
+      "Sp. Attack": 80,
+      "Sp. Defense": 90,
+      "Speed": 30
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/839.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/839.png",
@@ -30226,6 +30491,15 @@
         ["Bulletproof", "true"]
       ]
     },
+    "base": {
+      "HP": 40,
+      "Attack": 40,
+      "Defense": 80,
+      "Sp. Attack": 40,
+      "Sp. Defense": 40,
+      "Speed": 20
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/840.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/840.png",
@@ -30254,6 +30528,15 @@
         ["Hustle", "true"]
       ]
     },
+    "base": {
+      "HP": 70,
+      "Attack": 110,
+      "Defense": 80,
+      "Sp. Attack": 95,
+      "Sp. Defense": 60,
+      "Speed": 70
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/841.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/841.png",
@@ -30282,6 +30565,15 @@
         ["Thick-fat", "true"]
       ]
     },
+    "base": {
+      "HP": 110,
+      "Attack": 85,
+      "Defense": 80,
+      "Sp. Attack": 100,
+      "Sp. Defense": 80,
+      "Speed": 30
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/842.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/842.png",
@@ -30310,6 +30602,15 @@
         ["Sand-veil", "true"]
       ]
     },
+    "base": {
+      "HP": 52,
+      "Attack": 57,
+      "Defense": 75,
+      "Sp. Attack": 35,
+      "Sp. Defense": 50,
+      "Speed": 46
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/843.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/843.png",
@@ -30338,6 +30639,15 @@
         ["Sand-veil", "true"]
       ]
     },
+    "base": {
+      "HP": 72,
+      "Attack": 107,
+      "Defense": 125,
+      "Sp. Attack": 65,
+      "Sp. Defense": 70,
+      "Speed": 71
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/844.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/844.png",
@@ -30362,6 +30672,15 @@
       "gender": "50.0:50.0",
       "ability": [["Gulp-missile", "false"]]
     },
+    "base": {
+      "HP": 70,
+      "Attack": 85,
+      "Defense": 55,
+      "Sp. Attack": 85,
+      "Sp. Defense": 95,
+      "Speed": 85
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/845.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/845.png",
@@ -30389,6 +30708,15 @@
         ["Propeller-tail", "true"]
       ]
     },
+    "base": {
+      "HP": 41,
+      "Attack": 63,
+      "Defense": 40,
+      "Sp. Attack": 40,
+      "Sp. Defense": 30,
+      "Speed": 66
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/846.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/846.png",
@@ -30416,6 +30744,15 @@
         ["Propeller-tail", "true"]
       ]
     },
+    "base": {
+      "HP": 61,
+      "Attack": 123,
+      "Defense": 60,
+      "Sp. Attack": 60,
+      "Sp. Defense": 50,
+      "Speed": 136
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/847.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/847.png",
@@ -30444,6 +30781,15 @@
         ["Klutz", "true"]
       ]
     },
+    "base": {
+      "HP": 40,
+      "Attack": 38,
+      "Defense": 35,
+      "Sp. Attack": 54,
+      "Sp. Defense": 35,
+      "Speed": 40
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/848.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/848.png",
@@ -30472,6 +30818,15 @@
         ["Technician", "true"]
       ]
     },
+    "base": {
+      "HP": 75,
+      "Attack": 98,
+      "Defense": 70,
+      "Sp. Attack": 114,
+      "Sp. Defense": 70,
+      "Speed": 75
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/849.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/849.png",
@@ -30500,6 +30855,15 @@
         ["Flame-body", "true"]
       ]
     },
+    "base": {
+      "HP": 50,
+      "Attack": 65,
+      "Defense": 45,
+      "Sp. Attack": 50,
+      "Sp. Defense": 50,
+      "Speed": 45
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/850.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/850.png",
@@ -30528,6 +30892,15 @@
         ["Flame-body", "true"]
       ]
     },
+    "base": {
+      "HP": 100,
+      "Attack": 115,
+      "Defense": 65,
+      "Sp. Attack": 90,
+      "Sp. Defense": 90,
+      "Speed": 65
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/851.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/851.png",
@@ -30555,6 +30928,15 @@
         ["Technician", "true"]
       ]
     },
+    "base": {
+      "HP": 50,
+      "Attack": 68,
+      "Defense": 60,
+      "Sp. Attack": 50,
+      "Sp. Defense": 50,
+      "Speed": 32
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/852.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/852.png",
@@ -30582,6 +30964,15 @@
         ["Technician", "true"]
       ]
     },
+    "base": {
+      "HP": 80,
+      "Attack": 118,
+      "Defense": 90,
+      "Sp. Attack": 70,
+      "Sp. Defense": 80,
+      "Speed": 42
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/853.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/853.png",
@@ -30609,6 +31000,15 @@
         ["Cursed-body", "true"]
       ]
     },
+    "base": {
+      "HP": 40,
+      "Attack": 45,
+      "Defense": 45,
+      "Sp. Attack": 74,
+      "Sp. Defense": 54,
+      "Speed": 50
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/854.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/854.png",
@@ -30636,6 +31036,15 @@
         ["Cursed-body", "true"]
       ]
     },
+    "base": {
+      "HP": 60,
+      "Attack": 65,
+      "Defense": 65,
+      "Sp. Attack": 134,
+      "Sp. Defense": 114,
+      "Speed": 70
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/855.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/855.png",
@@ -30664,6 +31073,15 @@
         ["Magic-bounce", "true"]
       ]
     },
+    "base": {
+      "HP": 42,
+      "Attack": 30,
+      "Defense": 45,
+      "Sp. Attack": 56,
+      "Sp. Defense": 53,
+      "Speed": 39
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/856.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/856.png",
@@ -30692,6 +31110,15 @@
         ["Magic-bounce", "true"]
       ]
     },
+    "base": {
+      "HP": 57,
+      "Attack": 40,
+      "Defense": 65,
+      "Sp. Attack": 86,
+      "Sp. Defense": 73,
+      "Speed": 49
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/857.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/857.png",
@@ -30720,6 +31147,15 @@
         ["Magic-bounce", "true"]
       ]
     },
+    "base": {
+      "HP": 57,
+      "Attack": 90,
+      "Defense": 95,
+      "Sp. Attack": 136,
+      "Sp. Defense": 103,
+      "Speed": 29
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/858.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/858.png",
@@ -30748,6 +31184,15 @@
         ["Pickpocket", "true"]
       ]
     },
+    "base": {
+      "HP": 45,
+      "Attack": 45,
+      "Defense": 30,
+      "Sp. Attack": 55,
+      "Sp. Defense": 40,
+      "Speed": 50
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/859.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/859.png",
@@ -30776,6 +31221,15 @@
         ["Pickpocket", "true"]
       ]
     },
+    "base": {
+      "HP": 65,
+      "Attack": 60,
+      "Defense": 45,
+      "Sp. Attack": 75,
+      "Sp. Defense": 55,
+      "Speed": 70
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/860.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/860.png",
@@ -30804,6 +31258,15 @@
         ["Pickpocket", "true"]
       ]
     },
+    "base": {
+      "HP": 95,
+      "Attack": 120,
+      "Defense": 65,
+      "Sp. Attack": 95,
+      "Sp. Defense": 75,
+      "Speed": 60
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/861.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/861.png",
@@ -30832,6 +31295,15 @@
         ["Defiant", "true"]
       ]
     },
+    "base": {
+      "HP": 93,
+      "Attack": 90,
+      "Defense": 101,
+      "Sp. Attack": 60,
+      "Sp. Defense": 81,
+      "Speed": 95
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/862.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/862.png",
@@ -30860,6 +31332,15 @@
         ["Steely-spirit", "true"]
       ]
     },
+    "base": {
+      "HP": 70,
+      "Attack": 110,
+      "Defense": 100,
+      "Sp. Attack": 50,
+      "Sp. Defense": 60,
+      "Speed": 50
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/863.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/863.png",
@@ -30887,6 +31368,15 @@
         ["Perish-body", "true"]
       ]
     },
+    "base": {
+      "HP": 60,
+      "Attack": 95,
+      "Defense": 50,
+      "Sp. Attack": 145,
+      "Sp. Defense": 130,
+      "Speed": 30
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/864.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/864.png",
@@ -30914,6 +31404,15 @@
         ["Scrappy", "true"]
       ]
     },
+    "base": {
+      "HP": 62,
+      "Attack": 135,
+      "Defense": 95,
+      "Sp. Attack": 68,
+      "Sp. Defense": 82,
+      "Speed": 65
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/865.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/865.png",
@@ -30942,6 +31441,15 @@
         ["Ice-body", "true"]
       ]
     },
+    "base": {
+      "HP": 80,
+      "Attack": 85,
+      "Defense": 75,
+      "Sp. Attack": 110,
+      "Sp. Defense": 100,
+      "Speed": 70
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/866.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/866.png",
@@ -30966,6 +31474,15 @@
       "gender": "50.0:50.0",
       "ability": [["Wandering-spirit", "false"]]
     },
+    "base": {
+      "HP": 58,
+      "Attack": 95,
+      "Defense": 145,
+      "Sp. Attack": 50,
+      "Sp. Defense": 105,
+      "Speed": 30
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/867.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/867.png",
@@ -30993,6 +31510,15 @@
         ["Aroma-veil", "true"]
       ]
     },
+    "base": {
+      "HP": 45,
+      "Attack": 40,
+      "Defense": 40,
+      "Sp. Attack": 50,
+      "Sp. Defense": 61,
+      "Speed": 34
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/868.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/868.png",
@@ -31020,6 +31546,15 @@
         ["Aroma-veil", "true"]
       ]
     },
+    "base": {
+      "HP": 65,
+      "Attack": 60,
+      "Defense": 75,
+      "Sp. Attack": 110,
+      "Sp. Defense": 121,
+      "Speed": 64
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/869.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/869.png",
@@ -31047,6 +31582,15 @@
         ["Defiant", "true"]
       ]
     },
+    "base": {
+      "HP": 65,
+      "Attack": 100,
+      "Defense": 100,
+      "Sp. Attack": 70,
+      "Sp. Defense": 60,
+      "Speed": 75
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/870.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/870.png",
@@ -31074,6 +31618,15 @@
         ["Electric-surge", "true"]
       ]
     },
+    "base": {
+      "HP": 48,
+      "Attack": 101,
+      "Defense": 95,
+      "Sp. Attack": 91,
+      "Sp. Defense": 85,
+      "Speed": 15
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/871.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/871.png",
@@ -31101,6 +31654,15 @@
         ["Ice-scales", "true"]
       ]
     },
+    "base": {
+      "HP": 30,
+      "Attack": 25,
+      "Defense": 35,
+      "Sp. Attack": 45,
+      "Sp. Defense": 30,
+      "Speed": 20
+    },
+
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/872.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/872.png",
@@ -31128,6 +31690,14 @@
         ["Ice-scales", "true"]
       ]
     },
+    "base": {
+      "HP": 70,
+      "Attack": 65,
+      "Defense": 60,
+      "Sp. Attack": 125,
+      "Sp. Defense": 90,
+      "Speed": 65
+    },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/873.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/873.png",
@@ -31152,6 +31722,14 @@
       "gender": "50.0:50.0",
       "ability": [["Power-spot", "false"]]
     },
+    "base": {
+      "HP": 100,
+      "Attack": 125,
+      "Defense": 135,
+      "Sp. Attack": 20,
+      "Sp. Defense": 20,
+      "Speed": 70
+    },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/874.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/874.png",
@@ -31175,6 +31753,14 @@
       "weight": "89 kg",
       "gender": "50.0:50.0",
       "ability": [["Ice-face", "false"]]
+    },
+    "base": {
+      "HP": 75,
+      "Attack": 80,
+      "Defense": 110,
+      "Sp. Attack": 65,
+      "Sp. Defense": 90,
+      "Speed": 50
     },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/875.png",
@@ -31204,6 +31790,14 @@
         ["Psychic-surge", "true"]
       ]
     },
+    "base": {
+      "HP": 60,
+      "Attack": 65,
+      "Defense": 55,
+      "Sp. Attack": 95,
+      "Sp. Defense": 105,
+      "Speed": 95
+    },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/876.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/876.png",
@@ -31227,6 +31821,14 @@
       "weight": "3 kg",
       "gender": "50.0:50.0",
       "ability": [["Hunger-switch", "false"]]
+    },
+    "base": {
+      "HP": 58,
+      "Attack": 95,
+      "Defense": 58,
+      "Sp. Attack": 70,
+      "Sp. Defense": 58,
+      "Speed": 97
     },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/877.png",
@@ -31254,6 +31856,14 @@
         ["Heavy-metal", "true"]
       ]
     },
+    "base": {
+      "HP": 72,
+      "Attack": 80,
+      "Defense": 49,
+      "Sp. Attack": 40,
+      "Sp. Defense": 49,
+      "Speed": 40
+    },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/878.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/878.png",
@@ -31280,6 +31890,14 @@
         ["Sheer-force", "false"],
         ["Heavy-metal", "true"]
       ]
+    },
+    "base": {
+      "HP": 122,
+      "Attack": 130,
+      "Defense": 69,
+      "Sp. Attack": 80,
+      "Sp. Defense": 69,
+      "Speed": 30
     },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/879.png",
@@ -31309,6 +31927,14 @@
         ["Sand-rush", "true"]
       ]
     },
+    "base": {
+      "HP": 90,
+      "Attack": 100,
+      "Defense": 90,
+      "Sp. Attack": 80,
+      "Sp. Defense": 70,
+      "Speed": 75
+    },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/880.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/880.png",
@@ -31336,6 +31962,14 @@
         ["Static", "false"],
         ["Slush-rush", "true"]
       ]
+    },
+    "base": {
+      "HP": 90,
+      "Attack": 100,
+      "Defense": 90,
+      "Sp. Attack": 90,
+      "Sp. Defense": 80,
+      "Speed": 55
     },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/881.png",
@@ -31365,6 +31999,14 @@
         ["Sand-rush", "true"]
       ]
     },
+    "base": {
+      "HP": 90,
+      "Attack": 90,
+      "Defense": 100,
+      "Sp. Attack": 70,
+      "Sp. Defense": 80,
+      "Speed": 75
+    },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/882.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/882.png",
@@ -31392,6 +32034,14 @@
         ["Ice-body", "false"],
         ["Slush-rush", "true"]
       ]
+    },
+    "base": {
+      "HP": 90,
+      "Attack": 90,
+      "Defense": 100,
+      "Sp. Attack": 80,
+      "Sp. Defense": 80,
+      "Speed": 55
     },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/883.png",
@@ -31421,6 +32071,14 @@
         ["Stalwart", "true"]
       ]
     },
+    "base": {
+      "HP": 70,
+      "Attack": 95,
+      "Defense": 115,
+      "Sp. Attack": 120,
+      "Sp. Defense": 50,
+      "Speed": 85
+    },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/884.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/884.png",
@@ -31448,6 +32106,14 @@
         ["Infiltrator", "false"],
         ["Cursed-body", "true"]
       ]
+    },
+    "base": {
+      "HP": 28,
+      "Attack": 60,
+      "Defense": 30,
+      "Sp. Attack": 40,
+      "Sp. Defense": 30,
+      "Speed": 82
     },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/885.png",
@@ -31477,6 +32143,14 @@
         ["Cursed-body", "true"]
       ]
     },
+    "base": {
+      "HP": 68,
+      "Attack": 80,
+      "Defense": 50,
+      "Sp. Attack": 60,
+      "Sp. Defense": 50,
+      "Speed": 102
+    },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/886.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/886.png",
@@ -31505,6 +32179,14 @@
         ["Cursed-body", "true"]
       ]
     },
+    "base": {
+      "HP": 88,
+      "Attack": 120,
+      "Defense": 75,
+      "Sp. Attack": 100,
+      "Sp. Defense": 75,
+      "Speed": 142
+    },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/887.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/887.png",
@@ -31528,6 +32210,14 @@
       "weight": "110 kg",
       "gender": "Genderless",
       "ability": [["Intrepid-sword", "false"]]
+    },
+    "base": {
+      "HP": 92,
+      "Attack": 150,
+      "Defense": 115,
+      "Sp. Attack": 80,
+      "Sp. Defense": 115,
+      "Speed": 138
     },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/888.png",
@@ -31553,6 +32243,14 @@
       "gender": "Genderless",
       "ability": [["Dauntless-shield", "false"]]
     },
+    "base": {
+      "HP": 92,
+      "Attack": 120,
+      "Defense": 115,
+      "Sp. Attack": 80,
+      "Sp. Defense": 115,
+      "Speed": 138
+    },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/889.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/889.png",
@@ -31576,6 +32274,14 @@
       "weight": "950 kg",
       "gender": "Genderless",
       "ability": [["Pressure", "false"]]
+    },
+    "base": {
+      "HP": 140,
+      "Attack": 85,
+      "Defense": 95,
+      "Sp. Attack": 145,
+      "Sp. Defense": 95,
+      "Speed": 130
     },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/890.png",
@@ -31606,6 +32312,14 @@
       "gender": "87.5:12.5",
       "ability": [["Inner-focus", "false"]]
     },
+    "base": {
+      "HP": 60,
+      "Attack": 90,
+      "Defense": 60,
+      "Sp. Attack": 53,
+      "Sp. Defense": 50,
+      "Speed": 72
+    },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/891.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/891.png",
@@ -31629,6 +32343,14 @@
       "weight": "105 kg",
       "gender": "87.5:12.5",
       "ability": [["Unseen-fist", "false"]]
+    },
+    "base": {
+      "HP": 100,
+      "Attack": 130,
+      "Defense": 100,
+      "Sp. Attack": 63,
+      "Sp. Defense": 60,
+      "Speed": 97
     },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/892.png",
@@ -31654,6 +32376,14 @@
       "gender": "Genderless",
       "ability": [["Leaf-guard", "false"]]
     },
+    "base": {
+      "HP": 105,
+      "Attack": 120,
+      "Defense": 105,
+      "Sp. Attack": 70,
+      "Sp. Defense": 95,
+      "Speed": 105
+    },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/893.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/893.png",
@@ -31677,6 +32407,14 @@
       "weight": "145 kg",
       "gender": "Genderless",
       "ability": [["Transistor", "false"]]
+    },
+    "base": {
+      "HP": 80,
+      "Attack": 100,
+      "Defense": 50,
+      "Sp. Attack": 100,
+      "Sp. Defense": 50,
+      "Speed": 200
     },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/894.png",
@@ -31702,6 +32440,14 @@
       "gender": "Genderless",
       "ability": [["Dragons-maw", "false"]]
     },
+    "base": {
+      "HP": 200,
+      "Attack": 100,
+      "Defense": 50,
+      "Sp. Attack": 100,
+      "Sp. Defense": 50,
+      "Speed": 80
+    },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/895.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/895.png",
@@ -31725,6 +32471,14 @@
       "weight": "800 kg",
       "gender": "Genderless",
       "ability": [["Chilling-neigh", "false"]]
+    },
+    "base": {
+      "HP": 100,
+      "Attack": 145,
+      "Defense": 130,
+      "Sp. Attack": 65,
+      "Sp. Defense": 110,
+      "Speed": 30
     },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/896.png",
@@ -31750,6 +32504,14 @@
       "gender": "Genderless",
       "ability": [["Grim-neigh", "false"]]
     },
+    "base": {
+      "HP": 100,
+      "Attack": 80,
+      "Defense": 80,
+      "Sp. Attack": 145,
+      "Sp. Defense": 80,
+      "Speed": 130
+    },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/897.png",
       "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/897.png",
@@ -31773,6 +32535,14 @@
       "weight": "8 kg",
       "gender": "Genderless",
       "ability": [["Unnerve", "false"]]
+    },
+    "base": {
+      "HP": 61,
+      "Attack": 100,
+      "Defense": 80,
+      "Sp. Attack": 80,
+      "Sp. Defense": 80,
+      "Speed": 80
     },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/898.png",
