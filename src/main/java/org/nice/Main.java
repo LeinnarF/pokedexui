@@ -7,9 +7,11 @@ import java.awt.*;
 import javax.swing.*;
 
 import org.nice.Panels.*;
+import org.nice.services.PokemonService;
 
 public class Main {
     public static void main(String[] args) {
+        PokemonService.init();
         JFrame frame = new JFrame("Pokedex");
         FlatIntelliJLaf.setup();
         ImageIcon AppIcon = new ImageIcon(Utils.getResource("/images/items/4.png"));
