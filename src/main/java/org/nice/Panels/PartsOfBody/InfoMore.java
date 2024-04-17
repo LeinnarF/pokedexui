@@ -107,6 +107,8 @@ public class InfoMore extends JPanel{
 
                 var eeveeEvols = eevee.getNextEvolution();
 
+                JPanel eeveePanel = new JPanel(new MigLayout("al center center, wrap 4"));
+
                 for(var evol : eeveeEvols){
                     JLabel evolInstanceImage = new JLabel();
                     evolInstanceImage.setIcon(
@@ -116,8 +118,26 @@ public class InfoMore extends JPanel{
                     evolInstanceImage.setHorizontalTextPosition(JLabel.CENTER);
                     evolInstanceImage.setVerticalTextPosition(JLabel.BOTTOM);
 
-                    evolutionPanel.add(evolInstanceImage);
+                    eeveePanel.add(evolInstanceImage);
                 }
+
+                JLabel eeveeBase = new JLabel();
+                eeveeBase.setIcon(PokemonImage.getThumbnail(p));
+                eeveeBase.setBorder(
+                    BorderFactory.createCompoundBorder(
+                        new FlatDropShadowBorder(
+                            UIManager.getColor("Component.shadowColor"),
+                            new Insets(10, 10, 10, 10),
+                            0.05f
+                        ),
+                        new EmptyBorder(20, 20, 20, 20)
+                    )
+                );
+
+                evolutionPanel.add(eeveeBase);
+                evolutionPanel.add(new JLabel("--->"));
+                evolutionPanel.add(eeveePanel);
+
             }
 
             else
