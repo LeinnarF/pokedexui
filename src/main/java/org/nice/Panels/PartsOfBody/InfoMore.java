@@ -100,11 +100,11 @@ public class InfoMore extends JPanel{
 
             // Set the evolList
             if(p.id()==133){
+                var eevee = p;
 
                 evolutionPanel.revalidate();
                 evolutionPanel.repaint();
 
-                var eevee = pokemonService.getPokemon(133).get();
                 var eeveeEvols = eevee.getNextEvolution();
 
                 for(var evol : eeveeEvols){
