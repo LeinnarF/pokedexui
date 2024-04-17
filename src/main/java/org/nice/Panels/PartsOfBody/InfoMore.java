@@ -20,8 +20,8 @@ import javax.swing.border.EmptyBorder;
 
 public class InfoMore extends JPanel{
     JPanel descriptionPanel = new JPanel(new MigLayout("align left top"));
-    JPanel evolutionPanel = new JPanel(new MigLayout("align center center"));
-    JPanel statsPanel = new JPanel(new MigLayout("align center center, wrap", "[]", "[]0[]0[]0[]0[]0[]"));
+    JPanel evolutionPanel = new JPanel(new MigLayout("align center"));
+    JPanel statsPanel = new JPanel(new MigLayout("align center, wrap", "[]", "[]0[]0[]0[]0[]0[]"));
     JPanel weaknessPanel = new JPanel();
 
     int maxStat = 255;
@@ -127,7 +127,7 @@ public class InfoMore extends JPanel{
 
             else
             {
-                evolutionPanel.setLayout(new MigLayout("align center center"));
+                evolutionPanel.setLayout(new MigLayout("align center"));
                 var evolList = new ArrayList<PokemonModel>();
                 var next = p.getNextEvolution();
                 var prev = p.getPrevEvolution();
@@ -163,7 +163,7 @@ public class InfoMore extends JPanel{
                             100,100
                     ));
                     card.add(image);
-                    card.add(new JLabel(evol.name()), "al center");
+                    card.add(new JLabel(evol.name()), "align center");
                     evolutionPanel.add(card);
                     if(i != evolList.size() - 1) {
                         evolutionPanel.add(new JLabel("---->"));
