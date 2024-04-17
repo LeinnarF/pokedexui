@@ -40,14 +40,14 @@ public class PokemonDataIntegrityTest {
                         MessageFormat.format("Pokemon should not be included in its evolution list. {0} ({1}) does", pokemon.name(), pokemon.id())
                 );
             }
-//            assertTrue(pokemon.image().hires().isPresent(), MessageFormat.format(
-//                    "All pokemons should have hires images. {0} does not have hires image",
-//                    pokemon.name()
-//            ));
-//            assertTrue(
-//                    pokemon.base().isPresent(),
-//                    MessageFormat.format("All pokemons should have base. {0} does not", pokemon.name())
-//            );
+            assertTrue(pokemon.image().hires().isPresent(), MessageFormat.format(
+                    "All pokemons should have hires images. {0} does not have hires image",
+                    pokemon.name()
+            ));
+            assertTrue(
+                    pokemon.base().isPresent(),
+                    MessageFormat.format("All pokemons should have base. {0} does not", pokemon.name())
+            );
         }
 
     }
