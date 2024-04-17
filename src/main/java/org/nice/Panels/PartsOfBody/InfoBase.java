@@ -5,12 +5,17 @@ import java.util.Optional;
 import java.util.List;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.MatteBorder;
 
 import org.nice.Utils;
 import org.nice.lib.roundcorner.RoundedCorners;
 import org.nice.models.PokemonModel;
 import org.nice.models.PokemonTypeColor;
 import org.nice.services.PokemonService;
+
+import com.formdev.flatlaf.ui.FlatDropShadowBorder;
 
 import net.miginfocom.swing.MigLayout;
 import rx.Observable;
@@ -61,7 +66,7 @@ public class InfoBase extends JPanel  {
     JLabel imagetoLabel = new JLabel(image);
     PokeImage.setPreferredSize(new Dimension(280,280));
     PokeImage.setBackground(new Color(0xE9FFFB));
-    PokeImage.setBorder(BorderFactory.createLineBorder(new Color(0xD9D9D9), 15));  
+    PokeImage.setBorder(BorderFactory.createLineBorder(new Color(0x808080), 15));  
     PokeImage.setLayout(new MigLayout("align center center"));
     PokeImage.add(imagetoLabel);
     
@@ -92,6 +97,16 @@ public class InfoBase extends JPanel  {
     JLabel pokeW = new JLabel();
     JLabel pokeG = new JLabel();
     Font statfont = new Font("Verdana",Font.PLAIN,16);
+    
+    // FIXME: shadow chu chu
+    PokeStat.setBorder(
+        BorderFactory.createCompoundBorder(
+                new FlatDropShadowBorder(Color.DARK_GRAY,new Insets(0,0,10,0) ,75),
+                new EmptyBorder(0,0,10,0)
+            )
+        );
+    
+
     PokeStat.setPreferredSize(new Dimension(280,280));
     PokeStat.setBackground(new Color(0xFFF3C7));
     PokeStat.setLayout(new MigLayout("","5%[100%]","[100%]"));
