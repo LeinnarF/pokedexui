@@ -24,7 +24,7 @@ public class PokemonTypeColor {
         typeColors.put("Psychic", new Color(0xFF608F));
         typeColors.put("Ice", new Color(0x87E0E0));
         typeColors.put("Dragon", new Color(0x6157D6));
-        typeColors.put("Dark", new Color(0x3A3531));
+        typeColors.put("Dark", new Color(0x45362D));
         typeColors.put("Fairy", new Color(0xFFAEC9));
     }
 
