@@ -35,7 +35,7 @@ public class InfoMore extends JPanel{
     Observable<PokemonModel> currentPokemonModel = pokemonService.onCurrentPokemon();
 
     public InfoMore(){
-//        setPreferredSize(new Dimension(640,276));
+        setPreferredSize(new Dimension(640,276));
         setBackground(Color.GRAY);
         setLayout(new MigLayout("align center ","0[grow]0","[grow]0"));
 
