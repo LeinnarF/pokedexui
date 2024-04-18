@@ -30770,7 +30770,7 @@
     "type": ["Electric", "Poison"],
     "species": "Baby Pokémon",
     "description": "It manipulates the chemical makeup of its poison to produce electricity. The voltage is weak, but it can cause a tingling paralysis.",
-    "evolution": { "next": [["849", "Level 30, with a "]] },
+    "evolution": { "next": [["849", "Level 30, with a"]] },
     "profile": {
       "height": "0 m",
       "weight": "11 kg",
@@ -30807,7 +30807,7 @@
     "type": ["Electric", "Poison"],
     "species": "Punk Pokémon",
     "description": "This short-tempered and aggressive Pokémon chugs stagnant water to absorb any toxins it might contain.",
-    "evolution": { "next": [["849", "Level 30, with a "]] },
+    "evolution": { "prev": ["848", "Level 32"]},
     "profile": {
       "height": "2 m",
       "weight": "40 kg",
@@ -31832,7 +31832,8 @@
     },
     "image": {
       "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/877.png",
-      "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/877.png"
+      "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/877.png",
+      "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/877.png"
     }
   },
   {
