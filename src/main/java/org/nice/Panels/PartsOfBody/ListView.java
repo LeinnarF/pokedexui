@@ -19,6 +19,8 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 public class ListView extends JScrollPane {
 
@@ -30,7 +32,7 @@ public class ListView extends JScrollPane {
         ArrayList<PokemonModel> pokeList = new ArrayList<>(PokemonService.getInstance().filterPokemons(List.of()));
 
         var list = new DynamicListView<>(
-            pokeList, //1st list ng poke
+            new ArrayList<PokemonModel>(), //1st list ng poke
             v -> String.valueOf(v.id()),
             v -> {
 
@@ -126,13 +128,16 @@ public class ListView extends JScrollPane {
         setViewportView(list);
         getVerticalScrollBar().setUnitIncrement(20);
         var service = SearchService.getInstance();
-        Observable.combineLatest(service.onSearchStringChange(), service.onTypeFilterChange(), List::of).subscribe(v -> {
-            var filters = (List<PokemonType>)v.get(1);
-            list.updateItems(
-                    PokemonService.getInstance().filterPokemons(filters, Optional.of(v.get(0).toString()))
-            );
-            repaint();
-            revalidate();
+        // Delays subscription to ensure fast runtime
+        CompletableFuture.delayedExecutor(500, TimeUnit.MILLISECONDS).execute(() -> {
+            Observable.combineLatest(service.onSearchStringChange(), service.onTypeFilterChange(), List::of).subscribe(v -> {
+                var filters = (List<PokemonType>)v.get(1);
+                list.updateItems(
+                        PokemonService.getInstance().filterPokemons(filters, Optional.of(v.get(0).toString()))
+                );
+                repaint();
+                revalidate();
+            });
         });
     }
 }
