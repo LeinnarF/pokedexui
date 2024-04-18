@@ -13,6 +13,8 @@ import org.nice.services.PokemonService;
 import rx.Observable;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -166,6 +168,33 @@ public class InfoMore extends JPanel{
                 Color.darkGray
         );
         card.add(condition, "align center");
+        card.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        card.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                PokemonService.getInstance().setCurrentPokemon(evol.model());
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
         return card;
     }
 }
