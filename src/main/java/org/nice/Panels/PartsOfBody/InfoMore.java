@@ -1,6 +1,8 @@
 package org.nice.Panels.PartsOfBody;
 
 import com.formdev.flatlaf.ui.FlatDropShadowBorder;
+import net.miginfocom.layout.LC;
+import net.miginfocom.layout.AlignX;
 import net.miginfocom.swing.MigLayout;
 import org.nice.Components.StatBar;
 import org.json.JSONArray;
@@ -13,7 +15,6 @@ import rx.Observable;
 import java.awt.*;
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Optional;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -32,7 +33,7 @@ public class InfoMore extends JPanel{
     Observable<PokemonModel> currentPokemonModel = pokemonService.onCurrentPokemon();
 
     public InfoMore(){
-        setPreferredSize(new Dimension(640,276));
+//        setPreferredSize(new Dimension(640,276));
         setBackground(Color.GRAY);
         setLayout(new MigLayout("align center ","0[grow]0","[grow]0"));
 
@@ -43,7 +44,6 @@ public class InfoMore extends JPanel{
         description.setFont(new Font("Verdana", Font.PLAIN, 16));
         description.setForeground(Color.DARK_GRAY);
         descriptionPanel.add(description);
-
 
         //Tabs
         UIManager.put("TabbedPane.foreground", Color.white);
@@ -67,83 +67,38 @@ public class InfoMore extends JPanel{
 
             evolutionPanel.removeAll();
 
-            // Set the evolList
-            if(p.id()==133){
-                String eeveeData = "{\"evolution\":{\"next\":[[\"134\",\"use Water Stone\"],[\"135\",\"use Thunder Stone\"],[\"136\",\"use Fire Stone\"],[\"196\",\"high Friendship, Daytime\"],[\"197\",\"high Friendship, Nighttime\"],[\"470\",\"level up near a Mossy Rock\"],[\"471\",\"level up near an Icy Rock\"],[\"700\",\"High Affection and knowing Fairy move\"]]}}";
-                JSONObject eeveeObject = new JSONObject(eeveeData);
-                JSONArray eeveeEvols = eeveeObject.getJSONObject("evolution").getJSONArray("next");
 
-                evolutionPanel.revalidate();
-                evolutionPanel.repaint();
+            evolutionPanel.setLayout(new MigLayout("align center"));
+            var next = p.getNextEvolution();
+            var prev = p.getPrevEvolution();
 
-                for(int i = 0; i < eeveeEvols.length();i++){
-                    JSONArray evolInfo = eeveeEvols.getJSONArray(i);
-                    int evolModelID = evolInfo.getInt(0);
-                    String evolMethod = evolInfo.getString(1);
-
-                    Optional<PokemonModel> evolInstanceOptional = pokemonService.getPokemon(evolModelID);
-                    PokemonModel evolInstance = evolInstanceOptional.get();
-
-                    JLabel evolInstanceImage = new JLabel();
-                    evolInstanceImage.setIcon(Utils.getImage(evolInstance.image().thumbnail()));
-                    evolInstanceImage.setText(evolInstance.name());
-                    evolInstanceImage.setHorizontalTextPosition(JLabel.CENTER);
-                    evolInstanceImage.setVerticalTextPosition(JLabel.BOTTOM);
-                    evolutionPanel.setLayout(new MigLayout("wrap 4", "[grow][grow][grow][grow]", "[grow][grow]"));
-                    evolutionPanel.add(evolInstanceImage);
-                }
+            prev.ifPresent(v -> {
+                evolutionPanel.add(renderEvolutionCard(v));
+                evolutionPanel.add(new JLabel("--->"));
+            });
+            evolutionPanel.add(renderEvolutionCard(
+                    new PokemonModel.EvolutionNiceData(
+                            p,""
+                    )
+            ));
+            if(!next.isEmpty()) {
+                var nextEvolPanel=  new JPanel(
+                        new MigLayout(
+                                new LC().wrapAfter(4).gridGap("0px","0px")
+                        )
+                );
+                evolutionPanel.add(new JLabel("--->"));
+                var scrollable = new JScrollPane(nextEvolPanel);
+                scrollable.setBorder(null);
+                evolutionPanel.add(scrollable);
+                next.forEach(n -> {
+                    var card = renderEvolutionCard(n);
+                    nextEvolPanel.add(card);
+                });
             }
 
-            else
-            {
-                evolutionPanel.setLayout(new MigLayout("align center"));
-                var evolList = new ArrayList<PokemonModel>();
-                var next = p.getNextEvolution();
-                var prev = p.getPrevEvolution();
-                evolList.add(p);
-                while(prev.isPresent()) {
-                    evolList.add(prev.get().model());
-                    prev = prev.get().model().getPrevEvolution();
-                }
-                while (!next.isEmpty()) {
-                    var a = next.get(0);
-                    evolList.add(a.model());
-                    next = a.model().getNextEvolution();
-                }
-                evolList.sort(Comparator.comparingInt(PokemonModel::id));
-
-                var i = 0;
-                for(var evol : evolList) {
-                    var card = new JPanel(new MigLayout("wrap", "grow"));
-                    card.setPreferredSize(new Dimension(120,120));
-                    card.setBorder(
-                            BorderFactory.createCompoundBorder(
-                                    new FlatDropShadowBorder(
-                                            UIManager.getColor("Component.shadowColor"),
-                                            new Insets(10,10,10,10),
-                                            0.05f
-                                    ),
-                                    new EmptyBorder(20,20,20,20)
-                            )
-                    );
-                    var image = new JLabel();
-                    image.setIcon(Utils.getImage(
-                            evol.image().thumbnail(),
-                            100,100
-                    ));
-                    card.add(image);
-                    card.add(new JLabel(evol.name()), "align center");
-                    evolutionPanel.add(card);
-                    if(i != evolList.size() - 1) {
-                        evolutionPanel.add(new JLabel("---->"));
-                    }
-                    i++;
-                }
-
-                evolutionPanel.revalidate();
-                evolutionPanel.repaint();
-            }
-
+            evolutionPanel.revalidate();
+            evolutionPanel.repaint();
 
 
             statsPanel.removeAll();
@@ -172,4 +127,47 @@ public class InfoMore extends JPanel{
 
         });
     }
+
+    private JPanel renderEvolutionCard(PokemonModel.EvolutionNiceData evol) {
+        var card = new JPanel(new MigLayout("wrap", ""));
+        card.setPreferredSize(new Dimension(120,120));
+        card.setBorder(
+                BorderFactory.createCompoundBorder(
+                        new FlatDropShadowBorder(
+                                UIManager.getColor("Component.shadowColor"),
+                                new Insets(10,10,10,10),
+                                0.05f
+                        ),
+                        new EmptyBorder(10,10,10,10)
+                )
+        );
+        var image = new JLabel();
+        image.setIcon(Utils.getImage(
+                evol.model().image().thumbnail(),
+                60,60
+        ));
+        card.add(image, "wrap 12px, align center ");
+        var nameLabel = new JLabel(
+                MessageFormat.format(
+                        "{0} #{1}",
+                        evol.model().name(),
+                        evol.model().id()
+                )
+        );
+        nameLabel.setFont(new Font(
+                "Verdana", Font.BOLD, 14
+        ));
+        card.add(nameLabel, "align center");
+        var condition = new JLabel(evol.level());
+        condition.setFont(
+                new Font("Verdana", Font.ITALIC, 10)
+        );
+        condition.setForeground(
+                Color.darkGray
+        );
+        card.add(condition, "align center");
+        return card;
+    }
 }
+
+
