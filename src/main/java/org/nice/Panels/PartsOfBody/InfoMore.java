@@ -38,42 +38,11 @@ public class InfoMore extends JPanel{
 
 
         //test values start
-        Optional<PokemonModel> dummyPokemon = pokemonService.getPokemon(1);
-        if(dummyPokemon.isPresent()){
-            PokemonModel dummyModel = dummyPokemon.get();
-
-            Optional<PokemonModel.BaseStats> dummyStats = dummyModel.base();
-            if(dummyStats.isPresent()){
-                PokemonModel.BaseStats baseStats = dummyStats.get();
-
-                HP = baseStats.HP();
-                ATK = baseStats.Attack();
-                DEF = baseStats.Defense();
-                SPATK = baseStats.SpAttack();
-                SPDEF = baseStats.SpDefense();
-                SPD = baseStats.Speed();
-
-            }else{System.out.println("NO STATS");}
-
-            descriptionText = dummyModel.description();
-
-        }else{System.out.println("NO POKEMON");}
-        //test value end
-
-        //description
         JLabel description = new JLabel();
         description.setText(MessageFormat.format("<HTML><br/><p>{0}</p></HTML>",descriptionText ));
         description.setFont(new Font("Verdana", Font.PLAIN, 16));
         description.setForeground(Color.DARK_GRAY);
         descriptionPanel.add(description);
-
-        //stat bars
-        statsPanel.add(new StatBar("HP", HP, maxStat, new Color(0xFFDF6D)));
-        statsPanel.add(new StatBar("ATK", ATK, maxStat, new Color(0xE46666)));
-        statsPanel.add(new StatBar("DEF", DEF, maxStat, new Color(0x7480ED)));
-        statsPanel.add(new StatBar("SP. ATK", SPATK, maxStat, new Color(0xF2A6A6)));
-        statsPanel.add(new StatBar("SP. DEF", SPDEF, maxStat, new Color(0x7DA6CC)));
-        statsPanel.add(new StatBar("SPD", SPD, maxStat, new Color(0x796CC9)));
 
 
         //Tabs
