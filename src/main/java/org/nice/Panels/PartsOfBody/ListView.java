@@ -128,16 +128,13 @@ public class ListView extends JScrollPane {
         setViewportView(list);
         getVerticalScrollBar().setUnitIncrement(20);
         var service = SearchService.getInstance();
-        // Delays subscription to ensure fast runtime
-        CompletableFuture.delayedExecutor(500, TimeUnit.MILLISECONDS).execute(() -> {
-            Observable.combineLatest(service.onSearchStringChange(), service.onTypeFilterChange(), List::of).subscribe(v -> {
-                var filters = (List<PokemonType>)v.get(1);
-                list.updateItems(
-                        PokemonService.getInstance().filterPokemons(filters, Optional.of(v.get(0).toString()))
-                );
-                repaint();
-                revalidate();
-            });
+        Observable.combineLatest(service.onSearchStringChange(), service.onTypeFilterChange(), List::of).subscribe(v -> {
+            var filters = (List<PokemonType>)v.get(1);
+            list.updateItems(
+                    PokemonService.getInstance().filterPokemons(filters, Optional.of(v.get(0).toString()))
+            );
+            repaint();
+            revalidate();
         });
     }
 }
