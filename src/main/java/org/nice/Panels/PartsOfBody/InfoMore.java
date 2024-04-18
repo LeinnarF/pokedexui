@@ -3,26 +3,30 @@ package org.nice.Panels.PartsOfBody;
 import com.formdev.flatlaf.ui.FlatDropShadowBorder;
 import net.miginfocom.swing.MigLayout;
 import org.nice.Components.StatBar;
+import org.nice.lib.roundcorner.RoundedCorners;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.nice.Utils;
 import org.nice.models.PokemonModel;
+import org.nice.models.PokemonTypeColor;
+import org.nice.models.PokemonTypeWeakness;
 import org.nice.services.PokemonService;
 import rx.Observable;
 
 import java.awt.*;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Optional;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class InfoMore extends JPanel{
+public class InfoMore extends JPanel {
     JPanel descriptionPanel = new JPanel(new MigLayout("align left top"));
     JPanel evolutionPanel = new JPanel(new MigLayout("align center"));
     JPanel statsPanel = new JPanel(new MigLayout("align center, wrap", "[]", "[]0[]0[]0[]0[]0[]"));
-    JPanel weaknessPanel = new JPanel();
+    JPanel weaknessPanel = new JPanel(new MigLayout("align center"));
 
     int maxStat = 255;
     int HP, ATK, DEF, SPATK, SPDEF, SPD;
@@ -31,21 +35,24 @@ public class InfoMore extends JPanel{
     PokemonService pokemonService = PokemonService.getInstance();
     Observable<PokemonModel> currentPokemonModel = pokemonService.onCurrentPokemon();
 
-    public InfoMore(){
-        setPreferredSize(new Dimension(640,276));
+    public InfoMore() {
+        setPreferredSize(new Dimension(640, 276));
         setBackground(Color.GRAY);
-        setLayout(new MigLayout("align center ","0[grow]0","[grow]0"));
+        setLayout(new MigLayout("align center ", "0[grow]0", "[grow]0"));
 
-
-        //test values start
+        // test values start
         JLabel description = new JLabel();
-        description.setText(MessageFormat.format("<HTML><br/><p>{0}</p></HTML>",descriptionText ));
+        description.setText(MessageFormat.format("<HTML><br/><p>{0}</p></HTML>", descriptionText));
         description.setFont(new Font("Verdana", Font.PLAIN, 16));
         description.setForeground(Color.DARK_GRAY);
         descriptionPanel.add(description);
 
+        // Weaknesses declaration
+        PokemonTypeWeakness typeWeakness = new PokemonTypeWeakness();
+        ArrayList<String> weaknesses = new ArrayList<>();
+        JPanel containerPanel = new JPanel(new MigLayout("align center"));
 
-        //Tabs
+        // Tabs
         UIManager.put("TabbedPane.foreground", Color.white);
         UIManager.put("TabbedPane.background", Color.GRAY);
         var bg = UIManager.getColor("TabbedPane.background");
@@ -59,24 +66,59 @@ public class InfoMore extends JPanel{
         tab.setFont(new Font("Verdana", Font.PLAIN, 18));
 
         add(tab, "grow");
-        //setBorder(border);
+
         pokemonService.onCurrentPokemon().subscribe(p -> {
 
-            //description
-            description.setText(MessageFormat.format("<HTML><br><p>{0}</p></br></HTML>",p.description() ));
+            // description
+            description.setText(MessageFormat.format("<HTML><br><p>{0}</p></br></HTML>", p.description()));
+
+            // weaknesses
+            weaknesses.clear();
+            containerPanel.removeAll();
+
+            if (p.type().size() == 1) {
+                weaknesses.addAll(Arrays.asList(typeWeakness.getWeaknesses(p.type().get(0))));
+
+            } else {
+                weaknesses.addAll(Arrays.asList(typeWeakness.getWeaknesses(p.type().get(0),
+                        p.type().get(1))));
+            }
+
+            for (String weakness : weaknesses) {
+                JLabel weaknessLabel = new JLabel(weakness);
+                weaknessLabel.setForeground(Color.WHITE);
+                weaknessLabel.setFont(new Font("Arial", Font.BOLD, 20));
+                RoundedCorners typebox = new RoundedCorners();
+                RoundedCorners typeBoxShadow = new RoundedCorners();
+                typeBoxShadow.setLayout(new MigLayout("", "0[]0", "0[]0"));
+                typeBoxShadow.setAllRound(20);
+                typeBoxShadow.setBackground(new Color(0xf2f2f2));
+                typeBoxShadow.setBorder(
+                        BorderFactory.createCompoundBorder(
+                                new FlatDropShadowBorder(Color.BLACK, new Insets(1, 1, 10, 1), 0.15f),
+                                new EmptyBorder(0, 0, 0, 0)));
+                typebox.setBackground(PokemonTypeColor.getColor(weakness));
+                typebox.setAllRound(20);
+
+                typebox.add(weaknessLabel);
+                typeBoxShadow.add(typebox, "grow");
+                containerPanel.add(typeBoxShadow);
+            }
+            containerPanel.revalidate();
+            containerPanel.repaint();
+            weaknessPanel.add(containerPanel);
 
             evolutionPanel.removeAll();
-
             // Set the evolList
-            if(p.id()==133){
+            if (p.id() == 133) {
                 String eeveeData = "{\"evolution\":{\"next\":[[\"134\",\"use Water Stone\"],[\"135\",\"use Thunder Stone\"],[\"136\",\"use Fire Stone\"],[\"196\",\"high Friendship, Daytime\"],[\"197\",\"high Friendship, Nighttime\"],[\"470\",\"level up near a Mossy Rock\"],[\"471\",\"level up near an Icy Rock\"],[\"700\",\"High Affection and knowing Fairy move\"]]}}";
                 JSONObject eeveeObject = new JSONObject(eeveeData);
                 JSONArray eeveeEvols = eeveeObject.getJSONObject("evolution").getJSONArray("next");
 
-                evolutionPanel.revalidate();
-                evolutionPanel.repaint();
+                // evolutionPanel.revalidate();
+                // evolutionPanel.repaint();
 
-                for(int i = 0; i < eeveeEvols.length();i++){
+                for (int i = 0; i < eeveeEvols.length(); i++) {
                     JSONArray evolInfo = eeveeEvols.getJSONArray(i);
                     int evolModelID = evolInfo.getInt(0);
                     String evolMethod = evolInfo.getString(1);
@@ -94,14 +136,13 @@ public class InfoMore extends JPanel{
                 }
             }
 
-            else
-            {
+            else {
                 evolutionPanel.setLayout(new MigLayout("align center"));
                 var evolList = new ArrayList<PokemonModel>();
                 var next = p.getNextEvolution();
                 var prev = p.getPrevEvolution();
                 evolList.add(p);
-                while(prev.isPresent()) {
+                while (prev.isPresent()) {
                     evolList.add(prev.get().model());
                     prev = prev.get().model().getPrevEvolution();
                 }
@@ -113,28 +154,24 @@ public class InfoMore extends JPanel{
                 evolList.sort(Comparator.comparingInt(PokemonModel::id));
 
                 var i = 0;
-                for(var evol : evolList) {
+                for (var evol : evolList) {
                     var card = new JPanel(new MigLayout("wrap", "grow"));
-                    card.setPreferredSize(new Dimension(120,120));
+                    card.setPreferredSize(new Dimension(120, 120));
                     card.setBorder(
                             BorderFactory.createCompoundBorder(
                                     new FlatDropShadowBorder(
                                             UIManager.getColor("Component.shadowColor"),
-                                            new Insets(10,10,10,10),
-                                            0.05f
-                                    ),
-                                    new EmptyBorder(20,20,20,20)
-                            )
-                    );
+                                            new Insets(10, 10, 10, 10),
+                                            0.05f),
+                                    new EmptyBorder(20, 20, 20, 20)));
                     var image = new JLabel();
                     image.setIcon(Utils.getImage(
                             evol.image().thumbnail(),
-                            100,100
-                    ));
+                            100, 100));
                     card.add(image);
                     card.add(new JLabel(evol.name()), "align center");
                     evolutionPanel.add(card);
-                    if(i != evolList.size() - 1) {
+                    if (i != evolList.size() - 1) {
                         evolutionPanel.add(new JLabel("---->"));
                     }
                     i++;
@@ -144,11 +181,9 @@ public class InfoMore extends JPanel{
                 evolutionPanel.repaint();
             }
 
-
-
             statsPanel.removeAll();
             Optional<PokemonModel.BaseStats> stats = p.base();
-            if(stats.isPresent()){
+            if (stats.isPresent()) {
                 PokemonModel.BaseStats baseStats = stats.get();
                 HP = baseStats.HP();
                 ATK = baseStats.Attack();
@@ -167,8 +202,8 @@ public class InfoMore extends JPanel{
                 statsPanel.add(new JLabel("Pokemon got no stats available. );"));
             }
 
-            statsPanel.revalidate();
-            statsPanel.repaint();
+            // statsPanel.revalidate();
+            // statsPanel.repaint();
 
         });
     }

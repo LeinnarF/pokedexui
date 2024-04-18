@@ -32337,7 +32337,7 @@
     "type": ["Fighting", "Dark"],
     "species": "Wushu Pokémon",
     "description": "Inhabiting the mountains of a distant region, this Pokémon races across sheer cliffs, training its legs and refining its moves.",
-    "evolution": { "prev": ["892", "Scroll of Darkness"] },
+    "evolution": { "prev": ["891", "Scroll of Darkness"] },
     "profile": {
       "height": "2 m",
       "weight": "105 kg",
@@ -32537,8 +32537,8 @@
       "ability": [["Unnerve", "false"]]
     },
     "base": {
-      "HP": 61,
-      "Attack": 100,
+      "HP": 100,
+      "Attack": 80,
       "Defense": 80,
       "Sp. Attack": 80,
       "Sp. Defense": 80,
