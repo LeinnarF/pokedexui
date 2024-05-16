@@ -47,7 +47,7 @@ public class InfoMore extends JPanel {
                 JLabel description = new JLabel();
                 description.setText(MessageFormat.format("<HTML><br/><p>{0}</p></HTML>", descriptionText));
                 description.setFont(new Font("Verdana", Font.PLAIN, 16));
-                description.setForeground(Color.GRAY);
+                description.setForeground(Color.DARK_GRAY);
                 descriptionPanel.add(description);
 
                 // Weakness

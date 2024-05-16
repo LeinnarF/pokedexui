@@ -19,22 +19,22 @@ import rx.subjects.PublishSubject;
 public class Main {
     private static final java.util.List<String> fakeLoadingMessages = List.of(
             "Warming up",
-            "Taking breakfast",
+            "Gotta catch 'em all",
             "Loading pokedex.json",
             "Creating views",
-            "Opening the app"
-    );
+            "Opening the app");
+
     public static void main(String[] args) {
         FlatIntelliJLaf.setup();
 
         var disposeCall = PublishSubject.create();
         var random = new Random();
         var messageObservable = Observable.from(
-                fakeLoadingMessages
-        ).concatMap(message -> Observable.just(message).delay(
-                random.nextInt(200,700),
-                TimeUnit.MILLISECONDS
-        ).subscribeOn(Schedulers.io())).takeUntil(disposeCall);
+                fakeLoadingMessages).concatMap(
+                        message -> Observable.just(message).delay(
+                                random.nextInt(200, 700),
+                                TimeUnit.MILLISECONDS).subscribeOn(Schedulers.io()))
+                .takeUntil(disposeCall);
 
         JFrame loadingFrame = initLoadingFrame(messageObservable);
         PokemonService.init();
@@ -72,8 +72,7 @@ public class Main {
         loadingMessage.setFont(new Font(
                 "Verdana",
                 Font.ITALIC,
-                10
-        ));
+                10));
         root.add(loadingMessage, "align center");
 
         interval.subscribe(loadingMessage::setText);
